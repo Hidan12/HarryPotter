@@ -5,11 +5,11 @@ header{
 
 main{
     max-width: 100%;
-    min-height: 70vh;
+    min-height: 80vh;
 }
 footer{
     max-width: 100%;
-    min-height: 15vh;
+    min-height: 10vh;
 }
 
 .branch{
@@ -20,4 +20,10 @@ footer{
 .b-gradient{
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
+}
+.img-back{
+    background-image: url("../img/MFxo.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
