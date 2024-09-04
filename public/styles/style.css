@@ -1,0 +1,23 @@
+header{
+    min-width: 100%;
+    min-height: 10vh;
+}
+
+main{
+    max-width: 100%;
+    min-height: 70vh;
+}
+footer{
+    max-width: 100%;
+    min-height: 15vh;
+}
+
+.branch{
+    width: 75%;
+    height: 10vh;
+}
+
+.b-gradient{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
+}
