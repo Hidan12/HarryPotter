@@ -1,3 +1,7 @@
+*{
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+
 header{
     min-width: 100%;
     min-height: 10vh;
@@ -21,9 +25,53 @@ footer{
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
 }
+
+
+
+/* Estilo base de las tarjetas */
+.card_1 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px; /* Opcional: para dar bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra base */
+  }
+  
+  /* Efecto de sobrealzado cuando se pasa el mouse */
+  .card_1 .card:hover {
+    transform: translateY(-10px); /* Mueve la tarjeta hacia arriba 10px */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); 
+  }
+
 .img-back{
     background-image: url("../img/MFxo.gif");
     background-repeat: no-repeat;
     background-size: cover;
     
+}
+
+#var_search{
+    background: var(--color1);
+}
+
+:root{
+    --color1: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
+    --color2: linear-gradient(90deg, rgba(0,74,173,0.989233193277311) 0%, rgba(93,224,230,1) 30%);
+    
+}
+
+.custom-modal {
+    max-width: 80%;
+}
+
+.modal-body-scroll {
+    max-height: 400px; 
+    overflow-y:scroll;
+}
+
+#search{
+    background: var(--color2);
+}
+
+#search::placeholder{
+    color: white;
+
 }
