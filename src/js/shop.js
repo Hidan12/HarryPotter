@@ -102,13 +102,17 @@ createApp({
 
         },
         clickCart(){
-            this.clickCarts = !this.clickCarts
-            if (this.clickCarts) {
-                const audio = new Audio("../../public/sound/wing-flap-heavy-prototype-36710.mp3")
-                audio.play()
-            }else{
-                const audio = new Audio("../../public/sound/poof-of-smoke-87381.mp3")
-                audio.play()
+            if (!this.btnBuy) {
+                console.log("entrooooo");
+                
+                this.clickCarts = !this.clickCarts
+                if (this.clickCarts) {
+                    const audio = new Audio("../../public/sound/wing-flap-heavy-prototype-36710.mp3")
+                    audio.play()
+                }else{
+                    const audio = new Audio("../../public/sound/poof-of-smoke-87381.mp3")
+                    audio.play()
+                }
             }
         },
         uploadinformation(data, size = 0, prodSave=[]){
