@@ -53,7 +53,7 @@ fetch('https://hp-api.onrender.com/api/characters/students')
         console.log(gender);
 
         // Crear el gráfico
-        let ctx = document.getElementById('myTable').getContext('2d');
+        let ctx = document.getElementById('tableStudents').getContext('2d');
          new Chart(ctx, {
             type: 'bar', // Tipo de gráfico
             data: {
@@ -96,11 +96,11 @@ fetch('https://hp-api.onrender.com/api/characters/students')
                     label: 'Genders',
                     data: valuesGenders,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
+                        // 'rgba(75, 192, 192, 1)',
+                        // 'rgba(153, 102, 255, 1)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 2)',
@@ -123,7 +123,7 @@ fetch('https://hp-api.onrender.com/api/characters/students')
     })
     .catch(error => console.error('Error al obtener los datos:', error));
 
-//.....................................table1
+//.....................................table shop
 
 
 // Tus datos de productos
@@ -146,7 +146,7 @@ const tickets1 = Object.keys(countHouse1);
 const values1 = Object.values(countHouse1);
 
 // Crear el gráfico
-let printTable1 = document.getElementById('myTable1').getContext('2d');
+let printTable1 = document.getElementById('tableProducts').getContext('2d');
 let myTable1 = new Chart(printTable1, {
     type: 'bar', // Tipo de gráfico
     data: {
