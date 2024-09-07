@@ -16,6 +16,8 @@ const app_characters = createApp({
         selectedSpecies: '',
         selectedGender: '',
         selectedHouse: '',
+        currentPage: 1,     
+        itemsPerPage: 30, 
 
       }
     },
@@ -40,6 +42,22 @@ const app_characters = createApp({
             this.selectedCharacter = character;
             
             
+          },
+
+          previousPage() {
+            if (this.currentPage > 1) {
+              this.currentPage--;
+            }
+          },
+        
+          nextPage() {
+            if (this.currentPage < this.totalPages) {
+              this.currentPage++;
+            }
+          },
+        
+          goToPage(page) {
+            this.currentPage = page;
           }
 
     },
@@ -60,6 +78,20 @@ const app_characters = createApp({
             }
 
             return filteredBySearch;
-        }
+        },
+
+        totalPages() {
+            return Math.ceil(this.filteredCharacters.length / this.itemsPerPage);
+          },
+        
+          pageNumbers() {
+            return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+          },
+        
+          paginatedCharacters() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            const end = this.currentPage * this.itemsPerPage;
+            return this.filteredCharacters.slice(start, end);
+          }
     }
 }).mount('#app_characters')

@@ -25,23 +25,23 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../../index.html">Home</a>
+                            <a class="nav-link text-light fs-4" href="../../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./houses.html">Houses</a>
+                            <a class="nav-link text-light fs-4" href="./houses.html">Houses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled border border-warning px-3 rounded border-3  fw-bold text-light"
+                            <a class="nav-link disabled border border-warning px-3 rounded border-3  fs-4 fw-bold text-light"
                                 href="#"> Characters</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./spells.html">Spells</a>
+                            <a class="nav-link text-light fs-4" href="./spells.html">Spells</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./stats.html">Stats</a>
+                            <a class="nav-link text-light fs-4" href="./stats.html">Stats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./shop.html">Shop</a>
+                            <a class="nav-link text-light fs-4" href="./shop.html">Shop</a>
                         </li>
                     </ul>
                 </div>
@@ -54,31 +54,31 @@
 
         <div>
             <div>
-                <h1 class="text-warning text-center pt-5 fw-bold ">CHARACTERS</h1>
+                <h1 class="text-warning text-center pt-5 fw-bold">CHARACTERS</h1>
 
                 <p></p>
             </div>
 
-            <div class="d-flex flex-row flex-wrap justify-content-evenly mx-5 mt-5 p-2 border rounded" id="var_search">
+            <div class="d-flex flex-wrap justify-content-evenly mx-5 mt-5 p-2 border rounded" id="var_search">
 
 
 
-                <div class=" justify-content-evenly d-flex flex-wrap ">
+                <div class="gap-2 d-flex flex-wrap w-75 justify-content-evenly">
 
-                    <select v-model="selectedSpecies" class="border rounded">
-                        <option value="">Select Species</option>
-                        <option v-for="species in uniqueSpecies" :key="species" :value="species">{{ species }}</option>
+                    <select v-model="selectedSpecies" class="border b-selector  fs-4 rounded">
+                        <option value="" class="fs-4">Select Species</option>
+                        <option v-for="species in uniqueSpecies" :key="species" class="fs-4" :value="species">{{ species }}</option>
                     </select>
 
 
-                    <select class="border rounded" v-model="selectedGender">
-                        <option value="">Select Gender</option>
-                        <option v-for="gender in uniqueGenders" :key="gender" :value="gender">{{ gender }}</option>
+                    <select class="border b-selector fs-4 rounded" v-model="selectedGender">
+                        <option value="" class="fs-4">Select Gender</option>
+                        <option v-for="gender in uniqueGenders" :key="gender" class="fs-4" :value="gender">{{ gender }}</option>
                     </select>
 
-                    <select class="border rounded" v-model="selectedHouse">
-                        <option value="">Select House</option>
-                        <option v-for="house in uniqueHouses" :key="house" :value="house">{{ house }}</option>
+                    <select class="border b-selector fs-4 rounded" v-model="selectedHouse">
+                        <option value="" class="fs-4">Select House</option>
+                        <option v-for="house in uniqueHouses" :key="house" class="fs-4" :value="house">{{ house }}</option>
                     </select>
                 </div>
 
@@ -94,12 +94,12 @@
             <div class="container-fluid">
 
                 <div class="m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
-                    <div class="card_1" v-for="character in filteredCharacters" :key="character.id">
-                        <div class="card align-items-center justify-content-end border rounded-5 object-fit-contain h-100" @click="selectCharacter(character)">
+                    <div class="card_1" v-for="character in paginatedCharacters" :key="character.id">
+                        <div class="card align-items-center justify-content-end  object-fit-cover h-100" @click="selectCharacter(character)">
                             <img :src="character.image ? character.image : '../../public/img/Generic.jpg'"
-                                class="card-img-top h-100 object-fit-cover" alt="...">
+                                class="card-img-top h-100 object-fit-cover" alt="Image">
                            
-                                <h4 class="fs-5 position-absolute text-warning fw-bold card-title">{{ character.name }}</h4>
+                                <h4 class="fs-2 position-absolute text-warning text-center fw-bold card-title">{{ character.name }}</h4>
                                
                         </div>
                     </div>
@@ -108,10 +108,24 @@
 
         </div>
 
+        <nav aria-label="Page navigation" class="d-flex justify-content-center ">
+            <ul class="pagination d-flex flex-wrap">
+              <li class="page-item">
+                <button class="page-link" @click="previousPage">Previous</button>
+              </li>
+              <li class="page-item" v-for="page in pageNumbers" :key="page">
+                <button class="page-link" @click="goToPage(page)">{{ page }}</button>
+              </li>
+              <li class="page-item">
+                <button class="page-link" @click="nextPage">Next</button>
+              </li>
+            </ul>
+          </nav>
+
         <!-- Vertically centered modal -->
         <div v-if="selectedCharacter" class="modal fade d-block show" >
             <div class="modal-dialog modal-lg modal-dialog-centered" >
-                <div class="modal-content  d-flex">
+                <div class="modal-content b-gradient d-flex">
                         <div class="d-flex p-2 container-fluid justify-content-end">
 
                             <button type="button" class="close" @click="selectedCharacter = null">
@@ -119,35 +133,35 @@
                             </button>
                             
                         </div>
-                        <h3 class="text-center text-warning">{{ selectedCharacter.name }}</h3>
+                        <h3 class="text-center text-warning fs-1">{{ selectedCharacter.name }}</h3>
 
                         <div class="d-flex justify-content-center align-items-center" >
                             <div class="w-50">
                                 
                             <img :src="selectedCharacter.image ? selectedCharacter.image : '../../public/img/Generic.jpg'"
-                            class="card-img-top object-fit-cover img-fluid" alt="...">
+                            class="card-img-top border rounded-4 object-fit-cover img-fluid" alt="...">
                             </div>
                             
                             <div class="d-flex  modal-body-scroll w-50 flex-column">
 
                              <ul>
                              
-                                <li> Especie: {{ selectedCharacter.species }}</li>
-                                <li> Género: {{ selectedCharacter.gender }}</li>
-                                <li v-show="selectedCharacter.house"> Casa: {{ selectedCharacter.house }}</li>
-                                <li>Alive: {{ selectedCharacter.alive ? "Live" : "Dead" }}</li> 
-                                <li>Wizard: {{ selectedCharacter.wizard  ? "Yes" : "No" }}</li> 
-                                <li>Hogwarts Student: {{ selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</li>    
-                                <li>Alternate Names: {{ selectedCharacter.alternate_names }}</li> 
-                                <li v-show="selectedCharacter.dateOfBirth">Date of Birth: {{ selectedCharacter.dateOfBirth }}</li> 
-                                <li v-show="selectedCharacter.patronus">Patronus: {{ selectedCharacter.patronus }}</li> 
-                                <li v-show="selectedCharacter.yearOfBirth">Year of Birth: {{ selectedCharacter.yearOfBirth }}</li> 
-                                <li v-show="selectedCharacter.ancestry">Ancestry: {{ selectedCharacter.ancestry }}</li> 
-                                <li v-show="selectedCharacter.eyeColour">Eye Colour: {{ selectedCharacter.eyeColour }}</li> 
-                                <li v-show="selectedCharacter.hairColour">Hair Colour: {{ selectedCharacter.hairColour }}</li> 
-                                <li v-show="selectedCharacter.wand">Wand: {{ selectedCharacter.wand.wood }} {{ selectedCharacter.wand.core }} {{ selectedCharacter.wand.length }}</li>
-                                <li v-show="selectedCharacter.hogwartsStaff">Hogwarts Staff: {{ selectedCharacter.hogwartsStaff }}</li> 
-                                <li v-show="selectedCharacter.actor">Actor: {{ selectedCharacter.actor }}</li>
+                                <li class="text-light fs-4"> Especie: {{ selectedCharacter.species }}</li>
+                                <li class="text-light fs-4"> Género: {{ selectedCharacter.gender }}</li>
+                                <li class="text-light fs-4" v-show="selectedCharacter.house"> Casa: {{ selectedCharacter.house }}</li>
+                                <li class="text-light fs-4">Alive: {{ selectedCharacter.alive ? "Live" : "Dead" }}</li> 
+                                <li class="text-light fs-4">Wizard: {{ selectedCharacter.wizard  ? "Yes" : "No" }}</li> 
+                                <li class="text-light fs-4">Hogwarts Student: {{ selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</li>    
+                                <li class="text-light fs-4">Alternate Names: {{ selectedCharacter.alternate_names }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.dateOfBirth">Date of Birth: {{ selectedCharacter.dateOfBirth }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.patronus">Patronus: {{ selectedCharacter.patronus }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.yearOfBirth">Year of Birth: {{ selectedCharacter.yearOfBirth }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.ancestry">Ancestry: {{ selectedCharacter.ancestry }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.eyeColour">Eye Colour: {{ selectedCharacter.eyeColour }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.hairColour">Hair Colour: {{ selectedCharacter.hairColour }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.wand">Wand: {{ selectedCharacter.wand.wood }} {{ selectedCharacter.wand.core }} {{ selectedCharacter.wand.length }}</li>
+                                <li class="text-light fs-4" v-show="selectedCharacter.hogwartsStaff">Hogwarts Staff: {{ selectedCharacter.hogwartsStaff }}</li> 
+                                <li class="text-light fs-4" v-show="selectedCharacter.actor">Actor: {{ selectedCharacter.actor }}</li>
                              </ul>   
                            
 
