@@ -18,21 +18,21 @@ export default {
         }
     },
     products: [
-        { id: 1, name: "Ollivanders", category: "Wands", price: 29.99, house: "Gryffindor", img: "https://dcdn.mitiendanube.com/stores/003/871/956/products/harry-potter-varita-caja-ollivanders-gellert-grindelwald-1-6921c1c73ff1024bb316995692888793-1024-1024.jpg" },
-        { id: 2, name: "Honeydukes", category: "Sweets", price: 5.99, house: "Hufflepuff", img: "https://m.media-amazon.com/images/I/713cSwk9XuL.jpg" },
+        { id: 1, name: "Ollivanders", category: "Wands", price: 29.99, house: "Gryffindor", img: "https://th.bing.com/th?q=Ollivander%20s%20Ash%20Wand%20Universal%20Wizarding%20World%20Of%20Harry%20Potter%20Magic%20Red%20Brown&w=400&h=400&c=7&pid=1.7&adlt=moderate&t=1" },
+        { id: 2, name: "Honeydukes", category: "Sweets", price: 5.99, house: "Hufflepuff", img: "https://i.pinimg.com/564x/1a/47/ac/1a47ac805941fa69f432e5b0a7be319f.jpg" },
         { id: 3, name: "Madam Malkin's", category: "Clothes", discount: 15, price: 49.99, house: "Ravenclaw", img: "https://fastly.4sqi.net/img/general/600x600/3350979_WIjHWOXC6x3YFLD0fyuHnvggAQHwwLPDOvNDpgIlLSE.jpg" },
         { id: 4, name: "Flourish and Blotts", category: "Books", price: 15.99, house: "Slytherin", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa9dK6nGPOzPU0ODIFW5mSPzY1KDB0pu7jQ&s" },
         { id: 5, name: "Weasleys' Wizard Wheezes", category: "Sweets", price: 12.99, house: "Gryffindor", img: "https://media.wdwnt.com/2023/04/putty-1.jpg" },
-        { id: 6, name: "Eeylops Owl Emporium", category: "Wands", discount: 15, price: 20.00, house: "Ravenclaw", img: "https://i.ebayimg.com/thumbs/images/g/epIAAOSwCsFlGsmG/s-l1200.jpg" },
+        { id: 6, name: "Eeylops Owl Emporium", category: "Wands", discount: 15, price: 20.00, house: "Ravenclaw", img: "https://i.ebayimg.com/images/g/STQAAOSwzEtlElsS/s-l400.jpg" },
         { id: 7, name: "Slug & Jiggers Apothecary", category: "Potions", price: 18.50, house: "Slytherin", img: "https://static.wikia.nocookie.net/oneminuteago/images/e/e5/Slugjigwiki.jpg" },
-        { id: 8, name: "Quality Quidditch Supplies", category: "Clothes", discount: 15, price: 35.00, house: "Hufflepuff", img: "https://cinereplicas.eu/cdn/shop/products/QuidditchSweater-Hufflepuff-Product_1-4895205608832_grande.jpg?v=1656482752" },
-        { id: 9, name: "Magical Menagerie", category: "Wands", price: 22.75, house: "Gryffindor", img: "https://i.pinimg.com/736x/53/51/c4/5351c4f9d930972e7bcd6e80c5132e9d.jpg" },
+        { id: 8, name: "Quality Quidditch Supplies", category: "Clothes", price: 35.00, house: "Hufflepuff", img: "https://cinereplicas.eu/cdn/shop/products/QuidditchSweater-Hufflepuff-Product_1-4895205608832_grande.jpg?v=1656482752" },
+        { id: 9, name: "Magical Menagerie", category: "Wands", price: 22.75, discount: 15, house: "Gryffindor", img: "https://thefilmcell.com/cdn/shop/products/Harry-Potter-Character-Wands.jpg?v=1578331169" },
         { id: 10, name: "Borgin and Burkes", category: "Books", discount: 10, price: 45.99, house: "Slytherin", img: "https://image-cdn.neatoshop.com/styleimg/22944/none/black/default/204342-20.jpg" },
-        { id: 11, name: "The Leaky Cauldron", category: "Potions", price: 10.00, house: "Hufflepuff", img: "https://i.pinimg.com/474x/ff/06/56/ff0656709f991215b7d5b623316dc988.jpg" },
+        { id: 11, name: "The Leaky Cauldron", category: "Potions", price: 10.00, house: "Hufflepuff", img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8f4e42f1-6f53-4304-b3d7-2b00a5985a7e/dhtx1xr-716764ba-c1b3-4ae3-8aba-06806542bc55.jpg/v1/fill/w_400,h_400,q_75,strp/potion_by_inkvision17_dhtx1xr-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzhmNGU0MmYxLTZmNTMtNDMwNC1iM2Q3LTJiMDBhNTk4NWE3ZVwvZGh0eDF4ci03MTY3NjRiYS1jMWIzLTRhZTMtOGFiYS0wNjgwNjU0MmJjNTUuanBnIiwiaGVpZ2h0IjoiPD00MDAiLCJ3aWR0aCI6Ijw9NDAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLndhdGVybWFyayJdLCJ3bWsiOnsicGF0aCI6Ilwvd21cLzhmNGU0MmYxLTZmNTMtNDMwNC1iM2Q3LTJiMDBhNTk4NWE3ZVwvaW5rdmlzaW9uMTctNC5wbmciLCJvcGFjaXR5Ijo5NSwicHJvcG9ydGlvbnMiOjAuNDUsImdyYXZpdHkiOiJjZW50ZXIifX0.7ZWmz1qwBB-y3kvS1zSzAfubge6L-iRW6mZ6iOwIjjE" },
         { id: 12, name: "Florean Fortescue's Ice Cream Parlour", category: "Sweets", price: 7.50, house: "Ravenclaw", img: "https://images.squarespace-cdn.com/content/v1/6057e99eb4e03d64f1f9153d/1655689103961-C22TQWEX9IRN8MV62C6N/IMG_5750.jpg" },
         { id: 13, name: "Twilfitt and Tatting's", category: "Clothes", discount: 20, price: 55.00, house: "Slytherin", img: "https://ih1.redbubble.net/image.1527922733.4931/flat,750x,075,f-pad,750x1000,f8f8f8.jpg" },
         { id: 14, name: "Gambol and Japes", category: "Sweets", price: 14.99, house: "Gryffindor", img: "https://wandw.wdfiles.com/local--files/location:k-2-3/Interior_01.jpg" },
-        { id: 15, name: "The Magical Menagerie", category: "Wands", price: 19.99, house: "Hufflepuff", img: "https://i.ebayimg.com/images/g/ISUAAOSwQuNi-XYO/s-l1200.jpg" }
+        { id: 15, name: "The Magical Menagerie", category: "Wands", price: 19.99, house: "Hufflepuff", img: "https://cdn.waterstones.com/images/00209004-400x400.jpeg" }
     ]
     ,
     

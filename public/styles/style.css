@@ -1,29 +1,106 @@
-header{
-    min-width: 100%;
-    min-height: 10vh;
+body{
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+  cursor: url("../img/cursor.png"), auto;
+}
+button, a, input{
+  cursor: url("../img/cursor.png"), auto !important;
+}
+header {
+  min-width: 100%;
+  min-height: 10vh;
 }
 
-main{
-    max-width: 100%;
-    min-height: 80vh;
+main {
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 80vh;
 }
-footer{
-    max-width: 100%;
-    min-height: 10vh;
-}
-
-.branch{
-    width: 75%;
-    height: 10vh;
+footer {
+  max-width: 100%;
+  min-height: 10vh;
 }
 
-.b-gradient{
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
+.branch {
+  width: 75%;
+  height: 10vh;
 }
-.img-back{
-    background-image: url("../img/MFxo.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+
+.b-gradient {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 90%);
+}
+.img-back {
+  background-image: url("../img/MFxo.gif");
+  background-size: 100% 100%;
+}
+
+
+
+.h-card-cart{
+  min-height: 150px;
+}
+.h-msg-error{
+  height: 300px;
+}
+
+
+.img-slide-shop {
+  height: 100px;
+}
+.body-slide-shop {
+  height: 200px;
+}
+.rounded-card-shop {
+  border-radius: 20%;
+}
+.bg-card-shop {
+  background-color: rgba(202, 232, 255, 0.5);
+}
+.search-input {
+  border-radius: 15px;
+  height: 47px;
+}
+.search-input::placeholder {
+  color: rgb(1, 1, 58);
+}
+.bg-input-search {
+  background: rgb(0, 74, 173);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 74, 173, 0.989233193277311) 0%,
+    rgba(93, 224, 230, 1) 30%
+  ) !important;
+}
+.cont-animation{
+  position: absolute;
+  right: -300px;; 
+  transform: translateX(100%); 
+ 
+}
+.min-h-card{
+  min-height: 100px;
+}
+@keyframes slideIn {
+  from {
+      right: -300px;
+  }
+  to {
+      right: 36.1%;
+  }
+}
+
+@media (max-width: 992px) {
+  @keyframes slideIn {
+    from {
+        right: -300px;
+    }
+    to {
+        right: 96%;
+    }
+  }
+}
+.mostrar {
+  animation: slideIn 1s forwards ease; 
 }
