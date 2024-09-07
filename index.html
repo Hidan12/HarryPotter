@@ -27,7 +27,7 @@
                             <a class="nav-link disabled text-light" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./views/upcomingEvents.html">Houses</a>
+                            <a class="nav-link text-light" href="./public/views/houses.html">Houses</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="./views/pastEvents.html">Characters</a>
@@ -47,7 +47,26 @@
         </nav>
     </header>
     <main id="app" class=" img-back">
-
+        <div class="ehome">
+            <section class="etitle">
+                <img src="./public/img/logoFoter-removebg-preview.png" alt="Harry Poter">
+            </section>
+            <p>{{ homeText }}</p>
+        </div>
+        <div class="linkhouses">
+            <a href="./public/views/houses.html?house=Gryffindor">
+                <img src="./public/img/Gryffindor.png" alt="Gryffindor" />
+            </a>
+            <a href="./public/views/houses.html?house=Slytherin">
+                <img src="./public/img/SLYTHE-removebg-preview.png" alt="Slytherin" />
+            </a> 
+            <a href="./public/views/houses.html?house=Hufflepuff">
+                <img src="./public/img/HUFFLE-removebg-preview.png" alt="Hufflepuff" />
+            </a> 
+            <a href="./public/views/houses.html?house=Ravenclaw">
+                <img src="./public/img/reven-removebg-preview.png" alt="Ravenclaw" />
+            </a>             
+        </div>        
     </main>
     <footer class=" b-gradient d-flex flex-row align-items-center justify-content-between col-12">
         <div class="col-3">

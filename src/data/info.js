@@ -1,5 +1,5 @@
 export default {
-    home: "Harry James Potter is a half-blood wizard and the only son of James and Lily Potter. He is the only known person to have survived the curse of Avada Kedavra, doing so on two occasions. Both times the curse was cast by Lord Voldemort.",
+    home: "Harry Potter is a series of fantasy novels written by the British author J. K. Rowling, which describes the adventures of the young apprentice of magic and wizardry Harry Potter and his friends Hermione Granger and Ron Weasley, during the years they spend at Hogwarts School. . of Magic and Sorcery. The plot focuses on the fight between Harry Potter and the evil wizard Lord Voldemort, who murdered Harry's parents in his quest to conquer the magical world.",
     descriptionHouse: {
         house: {
             description: "Students belonging to each house do not necessarily have all the qualities that characterize each one of them. There are cases in which the Sorting Hat receives students who make it doubt which house they should be assigned to. If the Hat hesitates for more than five minutes, that student is called a Hatstall."
