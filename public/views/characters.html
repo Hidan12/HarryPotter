@@ -25,23 +25,23 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-4" href="../../index.html">Home</a>
+                            <a class="nav-link text-light" href="../../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-4" href="./houses.html">Houses</a>
+                            <a class="nav-link text-light" href="./houses.html">Houses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled border border-warning px-3 rounded border-3  fs-4 fw-bold text-light"
+                            <a class="nav-link disabled border border-warning px-3 rounded border-3 fw-bold text-light"
                                 href="#"> Characters</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-4" href="./spells.html">Spells</a>
+                            <a class="nav-link text-light" href="./spells.html">Spells</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-4" href="./stats.html">Stats</a>
+                            <a class="nav-link text-light" href="./stats.html">Stats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-4" href="./shop.html">Shop</a>
+                            <a class="nav-link text-light" href="./shop.html">Shop</a>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +54,7 @@
 
         <div>
             <div>
-                <h1 class="text-warning text-center pt-5 fw-bold">CHARACTERS</h1>
+                <h1 class="text-warning text-center harryP pt-5 fw-bold">CHARACTERS</h1>
 
                 <p></p>
             </div>
@@ -65,20 +65,20 @@
 
                 <div class="gap-2 d-flex flex-wrap w-75 justify-content-evenly">
 
-                    <select v-model="selectedSpecies" class="border b-selector  fs-4 rounded">
-                        <option value="" class="fs-4">Select Species</option>
-                        <option v-for="species in uniqueSpecies" :key="species" class="fs-4" :value="species">{{ species }}</option>
+                    <select v-model="selectedSpecies" class="border b-selector rounded">
+                        <option value="" class="">Select Species</option>
+                        <option v-for="species in uniqueSpecies" :key="species" class="" :value="species">{{ species }}</option>
                     </select>
 
 
-                    <select class="border b-selector fs-4 rounded" v-model="selectedGender">
-                        <option value="" class="fs-4">Select Gender</option>
-                        <option v-for="gender in uniqueGenders" :key="gender" class="fs-4" :value="gender">{{ gender }}</option>
+                    <select class="border b-selector rounded" v-model="selectedGender">
+                        <option value="" class="">Select Gender</option>
+                        <option v-for="gender in uniqueGenders" :key="gender" class="" :value="gender">{{ gender }}</option>
                     </select>
 
-                    <select class="border b-selector fs-4 rounded" v-model="selectedHouse">
-                        <option value="" class="fs-4">Select House</option>
-                        <option v-for="house in uniqueHouses" :key="house" class="fs-4" :value="house">{{ house }}</option>
+                    <select class="border b-selector rounded" v-model="selectedHouse">
+                        <option value="" class="">Select House</option>
+                        <option v-for="house in uniqueHouses" :key="house" class="" :value="house">{{ house }}</option>
                     </select>
                 </div>
 
@@ -106,7 +106,7 @@
                             <img :src="character.image ? character.image : '../../public/img/Generic.jpg'"
                                 class="card-img-top h-100 object-fit-cover" alt="Image">
                            
-                                <h4 class="fs-2 position-absolute text-warning text-center fw-bold card-title">{{ character.name }}</h4>
+                                <h4 class="fs-2 position-absolute harryP text-warning text-center fw-bold card-title">{{ character.name }}</h4>
                                
                         </div>
                     </div>
@@ -115,6 +115,7 @@
 
         </div>
 
+        <div v-if="pageNumbers.length > 0">
         <nav aria-label="Page navigation" class="d-flex justify-content-center ">
             <ul class="pagination d-flex flex-wrap">
               <li class="page-item">
@@ -128,6 +129,7 @@
               </li>
             </ul>
           </nav>
+        </div>
 
         <!-- Vertically centered modal -->
         <div v-if="selectedCharacter" class="modal fade d-block show" >
@@ -135,12 +137,12 @@
                 <div class="modal-content b-gradient d-flex">
                         <div class="d-flex p-2 container-fluid justify-content-end">
 
-                            <button type="button" class="close" @click="selectedCharacter = null">
-                                <span>&times;</span></button>
+                            <button type="button " class="close bg-transparent border-0" @click="selectedCharacter = null">
+                                <span class="harryP text-warning fs-1">X</span>
                             </button>
                             
                         </div>
-                        <h3 class="text-center text-warning fs-1">{{ selectedCharacter.name }}</h3>
+                        <h3 class="text-center text-warning harryP fs-1">{{ selectedCharacter.name }}</h3>
 
                         <div class="d-flex justify-content-center align-items-center" >
                             <div class="w-50">
