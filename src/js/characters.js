@@ -1,3 +1,6 @@
+import descriptions from '../data/info.js';
+
+
 let url = "https://hp-api.onrender.com/api/characters" 
 
 
@@ -18,6 +21,7 @@ const app_characters = createApp({
         selectedHouse: '',
         currentPage: 1,     
         itemsPerPage: 30, 
+        descriptioncharacter: descriptions.characterPage,
 
       }
     },
@@ -58,6 +62,20 @@ const app_characters = createApp({
         
           goToPage(page) {
             this.currentPage = page;
+          },
+          handleWheel(event) {
+            const modalBody = event.currentTarget;
+      
+            // Verifica si el scroll ha llegado al final del contenido
+            const isAtBottom = modalBody.scrollTop + modalBody.clientHeight >= modalBody.scrollHeight;
+      
+            // Si está en la parte superior e intenta desplazarse hacia arriba, o está en la parte inferior e intenta desplazarse hacia abajo
+            if (
+              (modalBody.scrollTop === 0 && event.deltaY < 0) || 
+              (isAtBottom && event.deltaY > 0)
+            ) {
+              event.preventDefault(); // Prevenir el scroll adicional
+            }
           }
 
     },
