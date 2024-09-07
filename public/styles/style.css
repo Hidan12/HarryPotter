@@ -1,10 +1,10 @@
-@font-face {
+/* @font-face {
     font-family: 'HarryP';
     src: url('../styles/fonts/HARRYP__.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-
+ */
 
 
 
@@ -12,7 +12,7 @@ body{
     font-family:cursive;
 }
 
-h1,h2,h3,h4,h5,h6 {
+/* h1,h2,h3,h4,h5,h6 {
     font-family: 'HarryP', sans-serif;
     text-shadow: 
       2px 2px 0 #000,
@@ -20,7 +20,7 @@ h1,h2,h3,h4,h5,h6 {
       1px -1px 0 #000,
       -1px 1px 0 #000,
       1px 1px 0 #000;
-}
+} */
 
 body{
   font-family: "Lumanosimo", cursive;
@@ -176,7 +176,7 @@ footer {
   height: 100px;
 }
 .body-slide-shop {
-  height: 200px;
+  min-height: 270px;
 }
 .rounded-card-shop {
   border-radius: 20%;
@@ -201,8 +201,9 @@ footer {
 }
 .cont-animation{
   position: absolute;
-  right: -300px;; 
-  transform: translateX(100%); 
+  right: -300px;
+  transform: translateX(100%);
+  animation: slideIn 1s forwards ease;
  
 }
 .min-h-card{
@@ -213,7 +214,7 @@ footer {
       right: -300px;
   }
   to {
-      right: 36.1%;
+      right: 45.3%;
   }
 }
 
@@ -223,10 +224,16 @@ footer {
         right: -300px;
     }
     to {
+
         right: 96%;
     }
   }
 }
-.mostrar {
-  animation: slideIn 1s forwards ease; 
+
+.h-card-buy{
+  height: 315px;
+}
+.buy-scroll{
+  max-height: 100px;
+  overflow-y: auto;
 }

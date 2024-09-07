@@ -8,6 +8,7 @@ createApp({
       return {
         quantityProductSaved: 0,
         clickCarts: false,
+        btnBuy: false,
         ProductSaved:[],
         totalPrice: 0,
         bkProducts: [],
@@ -28,6 +29,7 @@ createApp({
             let data = info.products.map((product) =>{
                 if (storage.find(str => str.id == product.id)) {
                     product.add = true
+                    this.totalPrice += product.discount ? (product.price * (1 - (product.discount /100))) : product.price
                 }
                 return product
             })
@@ -38,11 +40,42 @@ createApp({
         
     },
     methods: {
+        closeBuy(){
+            this.btnBuy = !this.btnBuy
+            this.products = this.products.map(product => {
+                if (product.add) {
+                    product.add = false
+                }
+                return product
+            })
+            this.ProductSaved = []
+            this.quantityProductSaved = 0
+            this.totalPrice = 0
+            localStorage.setItem("productsaved", JSON.stringify([]))
+        },
+
+        buyProduct(){
+            this.clickCarts = !this.clickCarts
+            this.btnBuy = !this.btnBuy
+        },
+        emptyProduct (){
+            this.products = this.products.map(product => {
+                if (product.add) {
+                    product.add = false
+                }
+                return product
+            })
+            this.ProductSaved = []
+            this.quantityProductSaved = 0
+            this.totalPrice = 0
+            localStorage.setItem("productsaved", JSON.stringify([]))
+
+        },
         addProduct(card){
             const audio = new Audio("../../public/sound/protego-105518.mp3")
             audio.play()
             card.add = !card.add
-            this.totalPrice += card.discount ? (card.price * (1 - (card.discount /100))).toFixed(1) : card.price
+            this.totalPrice += card.discount ? (card.price * (1 - (card.discount /100))) : card.price
             if (!this.ProductSaved.includes(card)) {
                 this.ProductSaved.push(card)
                 this.quantityProductSaved += 1
@@ -52,6 +85,7 @@ createApp({
         removeProduct(card){
             const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
             audio.play()
+            this.totalPrice -= card.discount ? (card.price * (1 - (card.discount /100))) : card.price
             let indexSaved = this.ProductSaved.findIndex(prod => prod.id === card.id);
             let indexbkProduct = this.bkProducts.findIndex(prod => prod.id === card.id)
             let indexProduct = this.products.findIndex(prod => prod.id === card.id)
