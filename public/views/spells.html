@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/styles/style.css">
-    <link rel="shortcut icon" href="./public/img/logoHeader-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="shortcut icon" href="../img/logoHeader-removebg-preview.png" type="image/x-icon">
     <title>Home</title>
 </head>
 
@@ -15,7 +15,7 @@
     <header class="b-gradient">
         <nav class="navbar navbar-expand-lg bg-gradient">
             <div class="container-fluid">
-                <a class="navbar-brand col-2" href="#"><img src="./public/img/logoHeader-removebg-preview.png" alt="" class="branch object-fit-contain"></a>
+                <a class="navbar-brand col-2" href="#"><img src="../img/logoHeader-removebg-preview.png" alt="" class="branch object-fit-contain"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon bg-light"></span>
@@ -24,22 +24,22 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link disabled text-light" href="#">Home</a>
+                            <a class="nav-link text-light" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./views/upcomingEvents.html">Houses</a>
+                            <a class="nav-link text-light" href="./houses.html">Houses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./views/pastEvents.html">Characters</a>
+                            <a class="nav-link text-light" href="#">Characters</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./views/contact.html">Spells</a>
+                            <a class="nav-link disabled text-light" href="#">Spells</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./views/stats.html">Stats</a>
+                            <a class="nav-link text-light" href="#">Stats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./views/stats.html">Shop</a>
+                            <a class="nav-link text-light" href="./shop.html">Shop</a>
                         </li>
                     </ul>
                 </div>
@@ -48,10 +48,39 @@
     </header>
     <main id="app" class=" img-back">
 
+        <div class="d-flex flex-column justify-content-center align-items-center p-3">
+
+            <h1 class="text-light spellstitle">SPELLS</h1>
+
+        <input class="bg-input-search text-light w-50" type="text" placeholder="Search Spell By Name" v-model="textSearch">
+
+
+        <div class="d-flex flex-column flex-md-row flex-wrap justify-content-center align-items-center gap-3 p-3">
+
+            
+
+            <div v-if="searchSpells.length == 0" class="d-flex flex-column align-items-center my-4">
+                <p class="text-light fs-3">As if by magic, the spell you were looking for has disappeared.</p>
+                <img src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif" alt="">
+            </div>
+
+    <div class="card bg-transparent border-0 d-flex" v-for="(spell,index) in searchSpells">
+        <img src="../img/kindpng_4042147.png" class="card-img cardSpell-s" alt="...">
+        <div class="card-img-overlay d-flex flex-column align-items-center">
+          <h5 class="card-title">{{spell.name}}</h5>
+          <p class="card-text cardtext-ov">{{spell.description}}</p>
+        </div>
+      </div>
+    
+</div>
+</div>
+
+
+
     </main>
-    <footer class=" b-gradient d-flex flex-row align-items-center justify-content-between col-12">
+    <footer class="b-gradient d-flex flex-row align-items-center justify-content-between col-12">
         <div class="col-3">
-          <img src="./public/img/logoFoter-removebg-preview.png" class="col-6" alt="...">
+          <img src="../img/logoFoter-removebg-preview.png" class="col-6" alt="...">
         </div>
         <div>
           <p class="text-light m-0 px-3">Create By: </p>
@@ -61,7 +90,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script type="module" src="./src/js/index.js"></script>
+    <script type="module" src="../../src/js/spells.js"></script>
 </body>
 
 </html>

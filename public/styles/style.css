@@ -27,3 +27,33 @@ footer{
     background-size: cover;
     
 }
+
+input::placeholder{
+    color: white;
+    text-align: center;
+}
+.bg-input-search{
+    background: rgb(0,74,173);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
+    border-radius: 10px;
+}
+
+.cardtext-ov{
+    width: 160px; 
+    height: 50px;
+    overflow: auto;
+    color: gray;
+}
+
+.cardtext-ov::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento */
+}
+
+.cardSpell-s{
+    height: 130px;
+    width: 280px;
+}
+
+.spellstitle{
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
