@@ -86,11 +86,18 @@
 
                 <label for="search">
 
-                    <input type="text" v-model="search" id="search" class="text-light form-control" placeholder="Search"
+                    <input type="text" v-model="search" id="search" class="text-light m-2 form-control" placeholder="Search"
                         aria-label="Search">
                 </label>
 
             </div>
+
+            <div v-if="paginatedCharacters.length == 0" class="d-flex flex-column align-items-center my-4">
+                <p class="text-light fs-3">As if by magic, the product you were looking for has disappeared.</p>
+                <img class="h-msg-error col-5" src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif"
+                    alt="">
+            </div>
+
             <div class="container-fluid">
 
                 <div class="m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
