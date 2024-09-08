@@ -306,7 +306,7 @@ input::placeholder{
   height: 100px;
 }
 .body-slide-shop {
-  height: 300px;
+  /* height: 300px; */
 }
 .rounded-card-shop {
   border-radius: 20%;
@@ -379,10 +379,10 @@ input::placeholder{
   overflow-y: auto;
 }
 .h-cointeiner-trunc{
-  height: 84px;
+  height: 16vh;
 }
 .h-p-trunc{
-  height: 50px;
+  height: 28%;
   overflow: hidden;
 }
 .description-truncked {
@@ -393,11 +393,11 @@ input::placeholder{
 }
 
 .h-cointeiner-detail{
-  height: 108px;
+  height: 20vh;
 
 }
 .h-p-detail{
-  height: 80px;
+  height: 38%;
   overflow: hidden
 }
 
