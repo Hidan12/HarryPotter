@@ -1,10 +1,10 @@
-/* @font-face {
+@font-face {
     font-family: 'HarryP';
     src: url('../styles/fonts/HARRYP__.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
- */
+
 
 
 
@@ -265,4 +265,24 @@ footer {
 .buy-scroll{
   max-height: 100px;
   overflow-y: auto;
+}
+.h-cointeiner-trunc{
+  height: 75px;
+}
+.h-p-trunc{
+  height: 50px;
+  overflow: hidden;
+}
+.description-truncked {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.h-cointeiner-trunc a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #007bff; /* Color del enlace, ajusta según sea necesario */
+  text-decoration: none;
 }
