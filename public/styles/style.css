@@ -12,7 +12,9 @@
 
 body{
     font-family:cursive;
+    background-color: var(--color3);
 }
+
 
 .harryP {
     font-family: 'HarryP', sans-serif;
@@ -47,6 +49,7 @@ footer{
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
 }
+
 
 .modal-header {
     border-bottom: 1px solid #ddd; /* Línea de separación en la parte inferior del encabezado */
@@ -84,6 +87,8 @@ footer{
     
 }
 
+
+
 #var_search{
     background: var(--color1);
 }
@@ -91,6 +96,7 @@ footer{
 :root{
     --color1: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
     --color2: linear-gradient(90deg, rgba(0,74,173,0.989233193277311) 0%, rgba(93,224,230,1) 30%);
+    --color3: rgba(44,44,44);
     
 }
 
@@ -206,7 +212,13 @@ input::placeholder{
 
 .modal-body-scroll {
     max-height: 400px; 
-    overflow-y:scroll;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Para navegadores Firefox */
+    -ms-overflow-style: none; /* Para navegadores Internet Explorer y Edge */
+}
+
+.modal-body-scroll::-webkit-scrollbar {
+    display: none; /* Para navegadores basados en WebKit como Chrome y Safari */
 }
 
 #search{
@@ -248,5 +260,23 @@ input::placeholder{
     .page-item {
       margin: 3px; /* Reduce el margen en pantallas pequeñas */
     }
-  }
 
+    .text-big{
+        font-size: 300%;
+    }
+
+    #p_description{
+        overflow-y: auto;
+        height: 250px;
+        
+    }
+    
+  }
+  
+
+
+@media (min-width: 720px) {
+    .text-big{
+        font-size: 400%;
+    }
+}    
