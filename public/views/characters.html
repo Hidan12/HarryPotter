@@ -105,19 +105,19 @@
                 <div class="d-flex flex-wrap justify-content-evenly mx-5 mt-5 p-2 border rounded" id="var_search">
                     <!-- Filtros de búsqueda -->
                     <div class="gap-2 d-flex flex-wrap w-75 justify-content-evenly">
-                        <select v-model="selectedSpecies" class="border d-flex align-items-center b-selector rounded">
+                        <select v-model="selectedSpecies" class="border col-12 col-md-3 d-flex align-items-center b-selector rounded">
                             <option value="" class="">Select Species</option>
                             <option v-for="species in uniqueSpecies" :key="species" class="" :value="species">{{ species }}</option>
                         </select>
 
 
-                        <select class="border b-selector rounded" v-model="selectedGender">
+                        <select class="border b-selector col-12 col-md-3 rounded" v-model="selectedGender">
                             <option value="" class="">Select Gender</option>
                             <option v-for="gender in uniqueGenders" :key="gender" class="" :value="gender">{{ gender }}
                             </option>
                         </select>
 
-                        <select class="border b-selector rounded" v-model="selectedHouse">
+                        <select class="border b-selector col-12 col-md-3 rounded" v-model="selectedHouse">
                             <option value="" class="">Select House</option>
                             <option v-for="house in uniqueHouses" :key="house" class="" :value="house">{{ house }}
                             </option>
@@ -125,7 +125,7 @@
                     </div>
 
                     <!-- Campo de búsqueda -->
-                    <label for="search" class="d-flex align-items-center">
+                    <label for="search" class="d-flex col-12 col-md-3 col-lg-2 align-items-center">
                         <input type="text" v-model="search" id="search" class="text-light m-2 form-control"
                             placeholder="Search" aria-label="Search">
                     </label>
