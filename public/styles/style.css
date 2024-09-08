@@ -13,7 +13,7 @@ body {
 .body-characters {
     font-family: cursive;
     background-color: var(--color3);
-}
+} */
 
 
 .harryP {
@@ -26,9 +26,18 @@ body {
         1px 1px 0 #000;
 }
 
-header {
-    min-width: 100%;
-    min-height: 10vh;
+body{
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+  cursor: url("../img/cursor.png"), auto;
+}
+button, a, input{
+  cursor: url("../img/cursor.png"), auto !important;
+}
+header  {
+  min-width: 100%;
+  min-height: 10vh;
 }
 
 main {
@@ -36,14 +45,14 @@ main {
     min-height: 80vh;
 }
 
-footer {
-    max-width: 100%;
-    min-height: 10vh;
+footer  {
+  max-width: 100%;
+  min-height: 10vh;
 }
 
-.branch {
-    width: 75%;
-    height: 10vh;
+.branch  {
+  width: 75%;
+  height: 10vh;
 }
 
 .b-gradient {
@@ -206,4 +215,136 @@ footer {
     .text-big {
         font-size: 400%;
     }
+}    
+.img-back {
+  background-image: url("../img/MFxo.gif");
+  background-size: 100% 100%;
+}
+
+
+
+.h-card-cart{
+  min-height: 150px;
+}
+.h-msg-error{
+  height: 300px;
+}
+
+
+.img-slide-shop {
+  height: 100px;
+}
+.body-slide-shop {
+  height: 300px;
+}
+.rounded-card-shop {
+  border-radius: 20%;
+}
+.bg-card-shop {
+  background-color: rgba(202, 232, 255, 0.5);
+}
+.search-input {
+  border-radius: 15px;
+  height: 47px;
+}
+.search-input::placeholder {
+  color: rgb(1, 1, 58);
+}
+.bg-input-search {
+  background: rgb(0, 74, 173);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 74, 173, 0.989233193277311) 0%,
+    rgba(93, 224, 230, 1) 30%
+  ) !important;
+}
+.cont-animation{
+  position: absolute;
+  right: -300px;
+  transform: translateX(100%);
+  animation: slideIn 1s forwards ease;
+ 
+}
+.min-h-card{
+  min-height: 100px;
+}
+@keyframes slideIn {
+  from {
+      right: -300px;
+  }
+  to {
+      right: 45.3%;
+  }
+}
+
+@media (max-width: 992px) {
+  @keyframes slideIn {
+    from {
+        right: -300px;
+    }
+    to {
+
+        right: 96%;
+    }
+  }
+}
+
+.h-card-detail{
+  height: 400px;
+}
+.h-detail-img{
+  height: 150px;
+}
+.detail-product-scroll{
+  height: 200px;
+  overflow-y: auto;
+}
+
+.h-card-buy{
+  height: 315px;
+}
+.buy-scroll{
+  max-height: 100px;
+  overflow-y: auto;
+}
+.h-cointeiner-trunc{
+  height: 84px;
+}
+.h-p-trunc{
+  height: 50px;
+  overflow: hidden;
+}
+.description-truncked {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h-cointeiner-detail{
+  height: 108px;
+
+}
+.h-p-detail{
+  height: 80px;
+  overflow: hidden
+}
+
+.animacion-carga{
+  width: 100%;
+  height: 100%;
+  animation: loading 1s forwards ease  
+}
+@keyframes loading {
+  from {
+    opacity: 1;
+  }
+  60%{
+    opacity: 0.9;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
 }
