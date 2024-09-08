@@ -16,12 +16,16 @@
 
 <body>
     <div id="app">
+        <!-- imagen de carga -->
+        <div class="position-absolute z-3 animacion-carga ">
+            <img src="../img/MFxo.gif" class="w-100 h-100 img-load" alt="">
+         </div>
         <header class="b-gradient">
             <nav class="navbar navbar-expand-lg bg-gradient">
                 <div class="container-fluid">
                     <a class="navbar-brand col-2" href="../../index.html"><img
                             src="../img/logoHeader-removebg-preview.png" alt="" class="branch object-fit-contain"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    <button class="navbar-toggler" @click="clickCart('d')" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon bg-light"></span>
                     </button>
@@ -64,7 +68,63 @@
             </nav>
         </header>
         <main class="img-back">
-            <!-- al comprar los productos-->
+            <!-- modal de detalle -->
+            <div v-if="detailProduct.name">
+                <div class="b-gradient rounded-4 col-11 col-md-7 z-2 position-fixed top-50 start-50 translate-middle h-card-detail">
+                    <div class="d-flex justify-content-end me-2">
+                        <button @click="closeDetail()" class="fs-1 text-end col-2 fw-bold text-warning harryP bg-transparent border-0">x</button>
+                    </div>
+                    <div>
+                        <h4 class="text-light text-center fs-1">{{detailProduct.name}}</h4>
+                    </div>
+                    <div class="d-flex flex-row flex-wrap justify-content-around align-items-center">
+                        <img :src="detailProduct.img" class="col-4 object-fit-contain h-detail-img" alt="">
+                        <div class="col-6">
+                            <div class="detail-product-scroll">
+                                <p class="text-light">{{detailProduct.description}}</p>
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <p class="text-light">price: {{detailProduct.price}}</p>
+                                    <p class="text-light">Category: {{detailProduct.category}}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mt-2 ">
+                                <!-- boton de  agregar o quitar producto -->
+                                <div class="ms-1 me-sm-5">
+                                    <div v-if="detailProduct.add">
+                                        <button type="button" @click="removeProduct(detailProduct) "
+                                            class="btn btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
+                                                </path>
+                                                <path
+                                                    d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
+                                                </path>
+                                            </svg>
+                                            remove
+                                        </button>
+                                    </div>
+                                    <div v-if="!detailProduct.add">
+                                        <button type="button" @click="addProduct(detailProduct)" class="btn btn-success">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
+                                                </path>
+                                            </svg>
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" @click="closeDetail()" class="ms-1 ms-sm-5 btn btn-danger">Close</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- modal de comprar los productos-->
             <div v-if="btnBuy">
                 <div class="b-gradient col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
                     <div class="d-flex justify-content-end">
@@ -95,7 +155,7 @@
                     </div>
                 </div>
             </div>
-            <!-- creacion de carrito de compra -->
+            <!-- carrito de compra -->
             <div v-if="clickCarts"
                 class="z-1 min-h-card col-11 col-md-7 col-lg-5 mostrar d-flex flex-row-reverse flex-lg-row align-items-center cont-animation justify-content-between">
                 <img class="col-2"
@@ -173,7 +233,7 @@
             <h2 class=" fs-1 text-center harryP text-warning p-4">STORE OFFERS</h2>
             <!-- carrusel -->
             <div class="d-flex justify-content-center pt-2">
-                <div id="cardCarousel" class="carousel slide col-12 col-sm-9 col-md-8 col-lg-6" data-bs-ride="carousel"
+                <div id="cardCarousel" class="carousel  slide col-12 col-sm-9 col-md-8 col-lg-6" data-bs-ride="carousel"
                     data-bs-interval="3000">
                     <div class="carousel-inner px-2">
                         <div v-for="(slide, index) in productSlider" :key="index"
@@ -199,14 +259,10 @@
                                                     <span class="ps-3 text-warning">{{ (card.price * (1 - (card.discount /
                                                         100))).toFixed(1) }}</span>
                                                 </p>
-                                                <div class="h-cointeiner-trunc d-flex flex-row flex-wrap">
-                                                    <p class="h-p-trunc m-0">{{card.description}}</p>
-                                                    <a @click="">...more</a>
+                                                <div class="h-cointeiner-trunc d-flex flex-column flex-nowrap">
+                                                    <p class="h-p-trunc text-light m-0">{{card.description}}</p>
+                                                    <p @click="clickDetail(card)" class="text-warning">...more</p>
                                                 </div>
-                                                <!-- <div class="h-cointeiner-trunc">
-                                                    <p class="description-truncked">{{card.description}}</p>
-                                                    <a @clicl="">more</a>
-                                                </div> -->
                                             </div>
                                             <div v-if="card.add">
                                                 <button type="button" @click="removeProduct(card) "
@@ -296,8 +352,9 @@
                                             Price: {{ card.price }}
                                         </p>
                                     </div>
-                                    <div>
-                                        <p class="card-text text-light">Category: {{card.category}}</p>
+                                    <div class="h-cointeiner-detail d-flex flex-column flex-nowrap mt-3">
+                                        <p class="h-p-detail text-light m-0">{{card.description}}</p>
+                                        <p @click="clickDetail(card)" class="text-warning">...more</p>
                                     </div>
                                 </div>
                                 <div v-if="card.add">

@@ -10,10 +10,10 @@
 
 
 
-body{
+/* body{
     font-family:cursive;
     background-color: var(--color3);
-}
+} */
 
 
 .harryP {
@@ -309,7 +309,7 @@ input::placeholder{
   height: 100px;
 }
 .body-slide-shop {
-  min-height: 270px;
+  height: 300px;
 }
 .rounded-card-shop {
   border-radius: 20%;
@@ -363,6 +363,17 @@ input::placeholder{
   }
 }
 
+.h-card-detail{
+  height: 400px;
+}
+.h-detail-img{
+  height: 150px;
+}
+.detail-product-scroll{
+  height: 200px;
+  overflow-y: auto;
+}
+
 .h-card-buy{
   height: 315px;
 }
@@ -371,7 +382,7 @@ input::placeholder{
   overflow-y: auto;
 }
 .h-cointeiner-trunc{
-  height: 75px;
+  height: 84px;
 }
 .h-p-trunc{
   height: 50px;
@@ -383,10 +394,31 @@ input::placeholder{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.h-cointeiner-trunc a {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #007bff; /* Color del enlace, ajusta según sea necesario */
-  text-decoration: none;
+
+.h-cointeiner-detail{
+  height: 108px;
+
+}
+.h-p-detail{
+  height: 80px;
+  overflow: hidden
+}
+
+.animacion-carga{
+  width: 100%;
+  height: 100%;
+  animation: loading 1s forwards ease  
+}
+@keyframes loading {
+  from {
+    opacity: 1;
+  }
+  60%{
+    opacity: 0.9;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
 }
