@@ -1,5 +1,6 @@
 export default {
     home: "Harry James Potter is a half-blood wizard and the only son of James and Lily Potter. He is the only known person to have survived the curse of Avada Kedavra, doing so on two occasions. Both times the curse was cast by Lord Voldemort.",
+    characterPage: "The world of Harry Potter is filled with a vast array of magical beings, each with their own unique stories, backgrounds, and qualities. From the brave students of Gryffindor to the cunning members of Slytherin, the curious minds of Ravenclaw, and the loyal hearts of Hufflepuff, every character has a role to play in the saga. Explore the diverse characters that make up this magical universe. Whether you’re searching for your favorite wizard, witch, or magical creature, or discovering new characters along the way, our character section allows you to dive deep into their histories, personalities, and affiliations. Use the filters below to find characters based on their house, species, gender, and more. Begin your journey through the wizarding world and uncover the stories of those who shape it.",
     descriptionHouse: {
         house: {
             description: "Students belonging to each house do not necessarily have all the qualities that characterize each one of them. There are cases in which the Sorting Hat receives students who make it doubt which house they should be assigned to. If the Hat hesitates for more than five minutes, that student is called a Hatstall."
@@ -18,21 +19,146 @@ export default {
         }
     },
     products: [
-        { id: 1, name: "Ollivanders", category: "Wands", price: 29.99, house: "Gryffindor", img: "https://dcdn.mitiendanube.com/stores/003/871/956/products/harry-potter-varita-caja-ollivanders-gellert-grindelwald-1-6921c1c73ff1024bb316995692888793-1024-1024.jpg" },
-        { id: 2, name: "Honeydukes", category: "Sweets", price: 5.99, house: "Hufflepuff", img: "https://m.media-amazon.com/images/I/713cSwk9XuL.jpg" },
-        { id: 3, name: "Madam Malkin's", category: "Clothes", discount: 15, price: 49.99, house: "Ravenclaw", img: "https://fastly.4sqi.net/img/general/600x600/3350979_WIjHWOXC6x3YFLD0fyuHnvggAQHwwLPDOvNDpgIlLSE.jpg" },
-        { id: 4, name: "Flourish and Blotts", category: "Books", price: 15.99, house: "Slytherin", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa9dK6nGPOzPU0ODIFW5mSPzY1KDB0pu7jQ&s" },
-        { id: 5, name: "Weasleys' Wizard Wheezes", category: "Sweets", price: 12.99, house: "Gryffindor", img: "https://media.wdwnt.com/2023/04/putty-1.jpg" },
-        { id: 6, name: "Eeylops Owl Emporium", category: "Wands", discount: 15, price: 20.00, house: "Ravenclaw", img: "https://i.ebayimg.com/thumbs/images/g/epIAAOSwCsFlGsmG/s-l1200.jpg" },
-        { id: 7, name: "Slug & Jiggers Apothecary", category: "Potions", price: 18.50, house: "Slytherin", img: "https://static.wikia.nocookie.net/oneminuteago/images/e/e5/Slugjigwiki.jpg" },
-        { id: 8, name: "Quality Quidditch Supplies", category: "Clothes", discount: 15, price: 35.00, house: "Hufflepuff", img: "https://cinereplicas.eu/cdn/shop/products/QuidditchSweater-Hufflepuff-Product_1-4895205608832_grande.jpg?v=1656482752" },
-        { id: 9, name: "Magical Menagerie", category: "Wands", price: 22.75, house: "Gryffindor", img: "https://i.pinimg.com/736x/53/51/c4/5351c4f9d930972e7bcd6e80c5132e9d.jpg" },
-        { id: 10, name: "Borgin and Burkes", category: "Books", discount: 10, price: 45.99, house: "Slytherin", img: "https://image-cdn.neatoshop.com/styleimg/22944/none/black/default/204342-20.jpg" },
-        { id: 11, name: "The Leaky Cauldron", category: "Potions", price: 10.00, house: "Hufflepuff", img: "https://i.pinimg.com/474x/ff/06/56/ff0656709f991215b7d5b623316dc988.jpg" },
-        { id: 12, name: "Florean Fortescue's Ice Cream Parlour", category: "Sweets", price: 7.50, house: "Ravenclaw", img: "https://images.squarespace-cdn.com/content/v1/6057e99eb4e03d64f1f9153d/1655689103961-C22TQWEX9IRN8MV62C6N/IMG_5750.jpg" },
-        { id: 13, name: "Twilfitt and Tatting's", category: "Clothes", discount: 20, price: 55.00, house: "Slytherin", img: "https://ih1.redbubble.net/image.1527922733.4931/flat,750x,075,f-pad,750x1000,f8f8f8.jpg" },
-        { id: 14, name: "Gambol and Japes", category: "Sweets", price: 14.99, house: "Gryffindor", img: "https://wandw.wdfiles.com/local--files/location:k-2-3/Interior_01.jpg" },
-        { id: 15, name: "The Magical Menagerie", category: "Wands", price: 19.99, house: "Hufflepuff", img: "https://i.ebayimg.com/images/g/ISUAAOSwQuNi-XYO/s-l1200.jpg" }
+        {
+            id: 1,
+            name: "Ollivanders",
+            category: "Wands",
+            price: 29.99,
+            house: "Gryffindor",
+            img: "https://th.bing.com/th?q=Ollivander%20s%20Ash%20Wand%20Universal%20Wizarding%20World%20Of%20Harry%20Potter%20Magic%20Red%20Brown&w=400&h=400&c=7&pid=1.7&adlt=moderate&t=1",
+            description: "Ollivanders offers high-quality magical wands, each carefully selected for each wizard. This wand, associated with Gryffindor, is made with exceptional materials, ensuring power and durability. Perfect for young and experienced wizards looking for a reliable and powerful wand. With Ollivanders, you'll find the wand that chooses you."
+        },
+        {
+            id: 2,
+            name: "Honeydukes",
+            category: "Sweets",
+            price: 5.99,
+            house: "Hufflepuff",
+            img: "https://i.pinimg.com/564x/1a/47/ac/1a47ac805941fa69f432e5b0a7be319f.jpg",
+            description: "Honeydukes is known for its delicious magical sweets. This special offer, associated with Hufflepuff, includes a variety of treats that will delight any wizard. Ideal for gifting or enjoying at any time, Honeydukes products are irresistible and perfect for sweet lovers."
+        },
+        {
+            id: 3,
+            name: "Madam Malkin's",
+            category: "Clothes",
+            discount: 15,
+            price: 49.99,
+            house: "Ravenclaw",
+            img: "https://fastly.4sqi.net/img/general/600x600/3350979_WIjHWOXC6x3YFLD0fyuHnvggAQHwwLPDOvNDpgIlLSE.jpg",
+            description: "Madam Malkin's offers high-quality clothing for wizards. This set, with a 15% discount, is ideal for Ravenclaw students. Made with top-notch materials, it guarantees comfort and style. Perfect for formal events and daily use, this set is an excellent addition to any wizard's wardrobe."
+        },
+        {
+            id: 4,
+            name: "Flourish and Blotts",
+            category: "Books",
+            price: 15.99,
+            house: "Slytherin",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa9dK6nGPOzPU0ODIFW5mSPzY1KDB0pu7jQ&s",
+            description: "Flourish and Blotts is the preferred bookstore for wizards. This book, associated with Slytherin, offers advanced magical knowledge. Ideal for students and experienced wizards, its content is valuable and educational. An excellent addition to any collection, this book is a must-have for those seeking to expand their magical knowledge."
+        },
+        {
+            id: 5,
+            name: "Weasleys' Wizard Wheezes",
+            category: "Sweets",
+            price: 12.99,
+            house: "Gryffindor",
+            img: "https://media.wdwnt.com/2023/04/putty-1.jpg",
+            description: "Weasleys' Wizard Wheezes offers a variety of magical and fun sweets. This package, ideal for Gryffindor followers, includes unique treats that will surprise and delight. Perfect for any occasion, these sweets are a fantastic choice for those seeking fun and flavor in every bite."
+        },
+        {
+            id: 6,
+            name: "Eeylops Owl Emporium",
+            category: "Wands",
+            discount: 15,
+            price: 20.00,
+            house: "Ravenclaw",
+            img: "https://i.ebayimg.com/images/g/STQAAOSwzEtlElsS/s-l400.jpg",
+            description: "Eeylops Owl Emporium presents this magical wand with a 15% discount. Ideal for Ravenclaw wizards, this wand is made with high-quality materials, ensuring exceptional performance. Perfect for precise and powerful spells, this wand is an excellent choice for wizards of all levels."
+        },
+        {
+            id: 7,
+            name: "Slug & Jiggers Apothecary",
+            category: "Potions",
+            price: 18.50,
+            house: "Slytherin",
+            img: "https://static.wikia.nocookie.net/oneminuteago/images/e/e5/Slugjigwiki.jpg",
+            description: "Slug & Jiggers Apothecary offers this magical potion, essential for any serious wizard. Associated with Slytherin, this potion is made with the finest ingredients and is perfect for a variety of magical uses. Ideal for experiments and advanced studies, it is a must-have addition to any potion collection."
+        },
+        {
+            id: 8,
+            name: "Quality Quidditch Supplies",
+            category: "Clothes",
+            price: 35.00,
+            house: "Hufflepuff",
+            img: "https://cinereplicas.eu/cdn/shop/products/QuidditchSweater-Hufflepuff-Product_1-4895205608832_grande.jpg?v=1656482752",
+            description: "Quality Quidditch Supplies presents this Quidditch apparel, perfect for Hufflepuff followers. Made with durable and comfortable materials, it is ideal for training and matches. With an attractive and functional design, this apparel is an excellent choice for any Quidditch enthusiast who wants to represent their house with pride."
+        },
+        {
+            id: 9,
+            name: "Magical Menagerie",
+            category: "Wands",
+            price: 22.75,
+            discount: 15,
+            house: "Gryffindor",
+            img: "https://thefilmcell.com/cdn/shop/products/Harry-Potter-Character-Wands.jpg?v=1578331169",
+            description: "Magical Menagerie offers this magical wand with a 15% discount. Associated with Gryffindor, this wand is designed to provide powerful and reliable performance. Perfect for young and experienced wizards, it is an excellent addition to any wand collection, ensuring precise and powerful spells."
+        },
+        {
+            id: 10,
+            name: "Borgin and Burkes",
+            category: "Books",
+            discount: 10,
+            price: 45.99,
+            house: "Slytherin",
+            img: "https://image-cdn.neatoshop.com/styleimg/22944/none/black/default/204342-20.jpg",
+            description: "Borgin and Burkes offers this rare and valuable book, with a 10% discount. Perfect for Slytherin followers, this book contains dark and advanced magical knowledge. Ideal for intensive studies and magical explorations, it is a must-have addition to any magical library."
+        },
+        {
+            id: 11,
+            name: "The Leaky Cauldron",
+            category: "Potions",
+            price: 10.00,
+            house: "Hufflepuff",
+            img: "https://i.ebayimg.com/images/g/94QAAOSw8mJh3D7a/s-l400.jpg",
+            description: "The Leaky Cauldron offers this magical potion, perfect for any aspiring potion master. Associated with Hufflepuff, this potion is made from high-quality ingredients and is ideal for various magical uses. Whether for experimentation or regular use, this potion is an essential addition to any collection."
+        },
+        {
+            id: 12,
+            name: "Florean Fortescue's Ice Cream Parlour",
+            category: "Sweets",
+            price: 7.50,
+            house: "Ravenclaw",
+            img: "https://www.insideuniversal.net/wp-content/uploads/2024/03/Photo-Mar-25-2024-2-56-39-PM-scaled-e1711483882203.jpg",
+            description: "Florean Fortescue's Ice Cream Parlour offers delightful and magical ice cream treats. Associated with Ravenclaw, these ice creams are not only delicious but also creatively designed to bring a touch of magic to every bite. Perfect for a treat on a hot day or a magical celebration."
+        },
+        {
+            id: 13,
+            name: "Twilfitt and Tatting's",
+            category: "Clothes",
+            discount: 20,
+            price: 55.00,
+            house: "Slytherin",
+            img: "https://ih1.redbubble.net/image.1527922733.4931/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+            description: "Twilfitt and Tatting's offers high-end clothing for discerning wizards. With a 20% discount, this set is perfect for Slytherin students. Crafted from premium materials, it combines style and comfort, making it ideal for formal events and daily wear. A must-have addition to any wardrobe, representing elegance and sophistication."
+        },
+        {
+            id: 14,
+            name: "Gambol and Japes",
+            category: "Sweets",
+            price: 14.99,
+            house: "Gryffindor",
+            img: "https://wandw.wdfiles.com/local--files/location:k-2-3/Interior_01.jpg",
+            description: "Gambol and Japes offers an assortment of magical sweets, perfect for Gryffindor enthusiasts. These treats are not only delicious but also come with fun magical effects, making them a hit at any gathering. Ideal for those looking to add a bit of excitement and flavor to their sweet collection."
+        },
+        {
+            id: 15,
+            name: "The Magical Menagerie",
+            category: "Wands",
+            price: 19.99,
+            house: "Hufflepuff",
+            img: "https://cdn.waterstones.com/images/00209004-400x400.jpeg",
+            description: "The Magical Menagerie presents this finely crafted wand, perfect for Hufflepuff students. Made with high-quality materials, it ensures excellent performance for all types of spells. Ideal for both beginners and experienced wizards, this wand is a reliable tool for any magical endeavor."
+        }
     ]
     ,
     
