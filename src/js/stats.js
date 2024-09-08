@@ -1,41 +1,34 @@
-
 import info from "../data/info.js"
+const { createApp } = Vue
 
-export default { //se tranfiere al html
-    template:
-        `
-        <main id="app" class="container-fluid d-flex justify-content-center align-items-center img-back p-3">
-        <!-- table stats -->
-        <div class="tables bg-light opacity-75 p-3">
-            <h5 class="text-center">Statistics</h5>
-            <div class="d-flex align-items-center justify-content-between col-6">
-                <canvas id="tableStudents" width="400" height="200"></canvas>
-                <canvas id="tableGender" width="400" height="200"></canvas>
-            </div>
-            <h5 class="text-center">Statistics Shop</h5>
-            <canvas id="tableProducts" width="400" height="200"></canvas>
-            
 
-            <!-- imagen gif -->
-            <img class="position-absolute col-2 bottom-0 end-0"
-                src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXN5cm16cGJpajZxaDMxcnJ6OG4wcGhqMHplcmI5cjdodzRyb3JiZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SsrQT2Au2Wn54fRxal/giphy.webp"
-                alt="">
-        </div>
-    
-    </main>
-         
-     `,
+createApp({
     data() {
         return {
+            quantityProductSaved: 0,
+            clickCarts: false,
+            ProductSaved: [],
+            totalPrice: 0,
+            btnBuy: false,
+            countHouseName: [],
+            coutnHouseValue: [],
             message: "funciona"
-        };
+        }
     },
     created() {
-        console.log(this.message);
-    },
-    mounted() {
+        let storage = JSON.parse(localStorage.getItem("productsaved"))
+        if (storage) {
+            let data = info.products.filter((product) => {
+                if (storage.find(str => str.id == product.id)) {
+                    product.add = true
+                    this.totalPrice += product.discount ? (product.price * (1 - (product.discount / 100))) : product.price
+                    return product
+                }
+            })
+            this.uploadinformation(data)
+        }
         this.fetchStudentData();
-        this.fetchProductData();
+
     },
     methods: {
         fetchStudentData() {
@@ -71,6 +64,7 @@ export default { //se tranfiere al html
 
                         // Create Gender Chart.js instance
                         this.createGenderChart(genderLabels, genderValues);
+                        this.fetchProductData()
                     } else {
                         alert("No student data found!");
                     }
@@ -79,6 +73,7 @@ export default { //se tranfiere al html
                     console.error('Error fetching student data:', error);
                     alert("An error occurred while fetching student data.");
                 });
+
         },
         fetchProductData() {
             // Process product data
@@ -89,11 +84,12 @@ export default { //se tranfiere al html
             }, {});
 
             // Prepare data for Chart.js
-            const tickets = Object.keys(countHouse);
-            const values = Object.values(countHouse);
+            this.countHouseName = Object.keys(countHouse);
+            this.coutnHouseValue = Object.values(countHouse);
+            console.log("setea ticket and values");
 
             // Create Chart.js instance
-            this.createProductsChart(tickets, values);
+            this.createProductsChart();
         },
         createStudentsChart(labels, data) {
             let ctx = document.getElementById('tableStudents').getContext('2d');
@@ -123,22 +119,46 @@ export default { //se tranfiere al html
                 },
                 options: {
                     scales: {
-                        y: {
-                            beginAtZero: true
+                      yAxes: [{
+                        ticks: {
+                          beginAtZero: true,
+                          fontSize: 30, // Tamaño del texto de las etiquetas del eje Y
+                          fontFamily: 'Arial', // Tipografía del texto de las etiquetas del eje Y
                         }
+                      }],
+                      xAxes: [{
+                        ticks: {
+                          fontSize: 14, // Tamaño del texto de las etiquetas del eje X
+                          fontFamily: 'Arial', // Tipografía del texto de las etiquetas del eje X
+                        }
+                      }]
+                    },
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      fontSize: 30, // Tamaño del texto del título
+                      fontFamily: 'Arial', // Tipografía del texto del título
+                    },
+                    legend: {
+                      labels: {
+                        fontSize: 25, // Tamaño del texto de las leyendas
+                        fontFamily: 'Arial', // Tipografía del texto de las leyendas
+                      }
                     }
-                }
-            });
+                  }
+                });
         },
-        createProductsChart(labels, data) {
-            let ctx = document.getElementById('tableProducts').getContext('2d');
-            new Chart(ctx, {
+        createProductsChart() {
+            const canvas = document.getElementById('tableProducts')
+            let product = canvas.getContext('2d');
+
+            new Chart(product, {
                 type: 'bar',
                 data: {
-                    labels: labels,
+                    labels: this.countHouseName,
                     datasets: [{
                         label: 'Products for Home',
-                        data: data,
+                        data: this.coutnHouseValue,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.5)',
                             'rgba(54, 162, 235, 0.5)',
@@ -197,6 +217,56 @@ export default { //se tranfiere al html
                     }
                 }
             });
-        }
+        },
+        closeBuy(){
+            this.btnBuy = !this.btnBuy
+            this.ProductSaved = []
+            this.quantityProductSaved = 0
+            this.totalPrice = 0
+            localStorage.setItem("productsaved", JSON.stringify([]))
+        },
+        buyProduct(){
+          this.clickCarts = !this.clickCarts
+          this.btnBuy = !this.btnBuy
+      },
+          emptyProduct() {
+            console.log("entro");
+            this.ProductSaved = []
+            this.quantityProductSaved = 0
+            this.totalPrice = 0
+            localStorage.setItem("productsaved", JSON.stringify([]))
+      
+          },
+          removeProduct(card) {
+            const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
+            audio.play()
+            let indexSaved = this.ProductSaved.findIndex(prod => prod.id === card.id);
+            if (indexSaved >= 0) {
+              this.totalPrice -= card.discount ? (card.price * (1 - (card.discount / 100))) : card.price
+              this.ProductSaved[indexSaved].add = false
+              this.ProductSaved.splice(indexSaved, 1)
+              localStorage.setItem("productsaved", JSON.stringify(this.ProductSaved))
+              this.quantityProductSaved = this.ProductSaved.length
+            }
+          },
+          clickCart() {
+            this.clickCarts = !this.clickCarts
+            if (this.clickCarts) {
+              const audio = new Audio("../../public/sound/wing-flap-heavy-prototype-36710.mp3")
+              audio.play()
+            } else {
+              const audio = new Audio("../../public/sound/poof-of-smoke-87381.mp3")
+              audio.play()
+            }
+          },
+          uploadinformation(data) {
+            this.quantityProductSaved = data.length
+            if (this.quantityProductSaved != 0) this.ProductSaved = data
+          }
+
+    },
+    computed: {
+
     }
-};
+
+}).mount('#app')
