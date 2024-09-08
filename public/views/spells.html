@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="shortcut icon" href="../img/logoHeader-removebg-preview.png" type="image/x-icon">
     <title>Home</title>
+    <!-- FONT MERIENDA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +34,7 @@
                             <a class="nav-link text-light" href="./houses.html">Houses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">Characters</a>
+                            <a class="nav-link text-light" href="./characters.html">Characters</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled text-light" href="#">Spells</a>
@@ -50,7 +54,7 @@
 
         <div class="d-flex flex-column justify-content-center align-items-center p-3">
 
-            <h1 class="text-light spellstitle">SPELLS</h1>
+            <h1 class="text-light harryP spellstitle">SPELLS</h1>
 
         <input class="bg-input-search text-light w-50" type="text" placeholder="Search Spell By Name" v-model="textSearch">
 
@@ -64,13 +68,33 @@
                 <img src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif" alt="">
             </div>
 
-    <div class="card bg-transparent border-0 d-flex" v-for="(spell,index) in searchSpells">
-        <img src="../img/kindpng_4042147.png" class="card-img cardSpell-s" alt="...">
-        <div class="card-img-overlay d-flex flex-column align-items-center">
-          <h5 class="card-title">{{spell.name}}</h5>
-          <p class="card-text cardtext-ov">{{spell.description}}</p>
+    <div class="card-container-custom" v-for="(spell,index) in paginatedSpells">
+        <img src="../img/pngwing.com.png" class="card-image-custom" alt="...">
+        <div class="card-body-custom">
+            <h5 class="card-title-custom harryP">{{spell.name}}</h5>
+            <div class="card-wrapper-text">
+                <p class="card-text-custom">{{spell.description}}</p>
+            </div>
         </div>
       </div>
+
+      <div v-if="pageNumbers.length > 0">
+        <nav aria-label="Page navigation" class="d-flex justify-content-center ">
+            <ul class="pagination d-flex flex-wrap">
+              <li class="page-item">
+                <button class="page-link" @click="previousPage">Previous</button>
+              </li>
+              <li class="page-item" v-for="page in pageNumbers" :key="page">
+                <button class="page-link" @click="goToPage(page)">{{ page }}</button>
+              </li>
+              <li class="page-item">
+                <button class="page-link" @click="nextPage">Next</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      
     
 </div>
 </div>
