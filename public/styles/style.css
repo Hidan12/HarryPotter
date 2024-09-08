@@ -252,41 +252,8 @@ input::placeholder{
     background-color: #e9ecef;
   }
   
-  @media (max-width: 720px) {
-    .pagination-nav {
-
-      flex-direction: column; /* Cambia la dirección en pantallas pequeñas */
-      justify-content: center;
-      align-items: center; /* Centra los elementos verticalmente */
-    }
   
-    .pagination {
-      justify-content: center; /* Centra la paginación */
-    }
-  
-    .page-item {
-      margin: 3px; /* Reduce el margen en pantallas pequeñas */
-    }
-
-    .text-big{
-        font-size: 300%;
-    }
-
-    #p_description{
-        overflow-y: auto;
-        height: 250px;
-        
-    }
-    
-  }
-  
-
-
-@media (min-width: 720px) {
-    .text-big{
-        font-size: 400%;
-    }
-}    
+      
 .img-back {
   background-image: url("../img/MFxo.gif");
   background-size: 100% 100%;
@@ -306,7 +273,7 @@ input::placeholder{
   height: 100px;
 }
 .body-slide-shop {
-  height: 300px;
+  /* height: 300px; */
 }
 .rounded-card-shop {
   border-radius: 20%;
@@ -348,17 +315,7 @@ input::placeholder{
   }
 }
 
-@media (max-width: 992px) {
-  @keyframes slideIn {
-    from {
-        right: -300px;
-    }
-    to {
 
-        right: 96%;
-    }
-  }
-}
 
 .h-card-detail{
   height: 400px;
@@ -379,10 +336,10 @@ input::placeholder{
   overflow-y: auto;
 }
 .h-cointeiner-trunc{
-  height: 84px;
+  height: 16vh;
 }
 .h-p-trunc{
-  height: 50px;
+  height: 28%;
   overflow: hidden;
 }
 .description-truncked {
@@ -393,11 +350,11 @@ input::placeholder{
 }
 
 .h-cointeiner-detail{
-  height: 108px;
+  height: 20vh;
 
 }
 .h-p-detail{
-  height: 80px;
+  height: 38%;
   overflow: hidden
 }
 
@@ -418,4 +375,69 @@ input::placeholder{
     opacity: 0;
     display: none;
   }
+}
+
+.size-canvas-stats{
+  font-size: medium;
+  height: 400px !important;
+  width: 90% !important;
+}
+
+
+
+
+
+
+
+@media (min-width: 720px) {
+  .text-big{
+      font-size: 400%;
+  }
+  .size-canvas-stats{
+    font-size: medium;
+    height: 400px !important;
+    width: 40% !important;
+  }
+  
+}
+
+@media (max-width: 720px) {
+  .pagination-nav {
+
+    flex-direction: column; /* Cambia la dirección en pantallas pequeñas */
+    justify-content: center;
+    align-items: center; /* Centra los elementos verticalmente */
+  }
+
+  .pagination {
+    justify-content: center; /* Centra la paginación */
+  }
+
+  .page-item {
+    margin: 3px; /* Reduce el margen en pantallas pequeñas */
+  }
+
+  .text-big{
+      font-size: 300%;
+  }
+
+  #p_description{
+      overflow-y: auto;
+      height: 250px;
+      
+  }
+  
+}
+
+@media (max-width: 992px) {
+  @keyframes slideIn {
+    from {
+        right: -300px;
+    }
+    to {
+
+        right: 96%;
+    }
+  }
+  
 }
