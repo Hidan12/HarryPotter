@@ -27,6 +27,17 @@ createApp({
         };
     },
     created() {
+        let storage = JSON.parse(localStorage.getItem("productsaved"))
+    if (storage) {
+      let data = info.products.filter((product) => {
+        if (storage.find(str => str.id == product.id)) {
+          product.add = true
+          this.totalPrice += product.discount ? (product.price * (1 - (product.discount / 100))) : product.price
+          return product
+        }
+      })
+      this.uploadinformation(data)
+    }
         this.loadHouseInfo();
     },
     computed: {
