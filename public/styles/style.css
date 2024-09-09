@@ -424,6 +424,86 @@ input::placeholder{
   }
   
 }
+.etitle{
+    display: flex;
+    justify-content: space-around;
+}
+
+.etitle img{
+    width: 68vh;
+    height: 29vh;
+}
+
+.ehome p{
+    color: white;
+    font-size: 1.3rem;
+    margin: 2rem;
+}
+
+.linkhouses{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.linkhouses img{
+    width: 36vh;
+    height: 25vh;
+    object-fit: contain;
+}
+
+.hotitle{
+    padding: 3rem;
+    color: antiquewhite;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ecards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ecards img{
+    object-fit: unset;
+}
+
+.tamcard{
+    margin: 1rem;
+}
+
+.search-input::placeholder{
+    color: white;
+}
+.bg-input-search{
+    background: rgb(0,74,173);
+    background: linear-gradient(90deg, rgba(0,74,173,0.989233193277311) 0%, rgba(93,224,230,1) 30%);
+}
+
+.titlehouses img{
+    width: 50vh;
+}
+
+.bg-card-shop{
+    background-color: rgba(202, 232, 255, 0.5);;
+}
+
+.card_houses {
+    position: relative;
+    overflow: hidden; 
+    transition: transform 0.3s ease; 
+}
+
+.card_houses:hover {
+    transform: scale(1.1);
+}
+
+.card_houses:hover .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 
 .modal-custom {
   width: 100%;

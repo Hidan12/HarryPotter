@@ -22,7 +22,11 @@ const app_characters = createApp({
       quantityProductSaved: 0,  // Cantidad de productos guardados
       clickCarts: false,  // Estado del carrito de compras (abierto/cerrado)
       ProductSaved: [],  // Lista de productos guardados en el carrito
+      bkProductSaved: [],
+      btnRemove: false,
+      deleteProduct: [],
       totalPrice: 0,  // Precio total de los productos en el carrito
+      BktotalPrice: 0,
       btnBuy: false,  // Estado del botón de compra (activo/inactivo)
     }
   },
@@ -90,27 +94,46 @@ const app_characters = createApp({
       }
     },
     closeBuy() {
-      // Cerrar la vista de compra y restablecer los datos
       this.btnBuy = !this.btnBuy
-      this.ProductSaved = []
-      this.quantityProductSaved = 0
-      this.totalPrice = 0
-      localStorage.setItem("productsaved", JSON.stringify([]))
+      this.bkProductSaved = []
+      this.BktotalPrice = 0
     },
     buyProduct() {
-      // Activar/desactivar el carrito de compras
       this.clickCarts = !this.clickCarts
       this.btnBuy = !this.btnBuy
+      this.bkProductSaved = [...this.ProductSaved]
+      this.ProductSaved = []
+      this.quantityProductSaved = 0
+      this.BktotalPrice = this.totalPrice
+      this.totalPrice = 0
+      localStorage.setItem("productsaved", JSON.stringify([]))
+    },
+    closeremuve() {
+      this.btnRemove = !this.btnRemove
+    },
+    deleteProducts(product = []) {
+      if (product.length > 0) {
+        this.deleteProduct = product
+      } else {
+        this.deleteProduct = this.ProductSaved
+      }
+      this.btnRemove = !this.btnRemove
+      this.clickCarts = !this.clickCarts
     },
     emptyProduct() {
-      // Vaciar el carrito de compras
+      if (this.btnRemove) {
+        this.btnRemove = false
+      }
       this.ProductSaved = []
       this.quantityProductSaved = 0
       this.totalPrice = 0
       localStorage.setItem("productsaved", JSON.stringify([]))
+
     },
     removeProduct(card) {
-      // Remover producto del carrito de compras y actualizar el total
+      if (this.btnRemove) {
+        this.btnRemove = false
+      }
       const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
       audio.play()
       let indexSaved = this.ProductSaved.findIndex(prod => prod.id === card.id);
@@ -123,7 +146,6 @@ const app_characters = createApp({
       }
     },
     clickCart() {
-      // Reproducir un sonido al abrir/cerrar el carrito de compras
       this.clickCarts = !this.clickCarts
       if (this.clickCarts) {
         const audio = new Audio("../../public/sound/wing-flap-heavy-prototype-36710.mp3")
@@ -134,11 +156,13 @@ const app_characters = createApp({
       }
     },
     uploadinformation(data) {
-      // Actualizar la información del carrito con los datos proporcionados
       this.quantityProductSaved = data.length
       if (this.quantityProductSaved != 0) this.ProductSaved = data
     }
+
+
   },
+
   computed: {
     filteredCharacters() {
       // Filtrar personajes según búsqueda y filtros seleccionados
