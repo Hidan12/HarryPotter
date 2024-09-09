@@ -34,7 +34,7 @@ const app_characters = createApp({
     // Cargar productos guardados desde localStorage si existen
     let storage = JSON.parse(localStorage.getItem("productsaved"))
     if (storage) {
-      let data = info.products.filter((product) => {
+      let data = descriptions.products.filter((product) => {
         if (storage.find(str => str.id == product.id)) {
           product.add = true
           this.totalPrice += product.discount ? (product.price * (1 - (product.discount / 100))) : product.price
