@@ -31,16 +31,16 @@
                                 <a class="nav-link disabled text-light" href="./public/views/houses.html">Houses</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/pastEvents.html">Characters</a>
+                                <a class="nav-link text-light" href="./characters.html">Characters</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/contact.html">Spells</a>
+                                <a class="nav-link text-light" href="./spells.html">Spells</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/stats.html">Stats</a>
+                                <a class="nav-link text-light" href="./stats.html">Stats</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/stats.html">Shop</a>
+                                <a class="nav-link text-light" href="./shop.html">Shop</a>
                             </li>
                             <li>
                                 <button type="button" @click="clickCart()" class="btn text-light position-relative">
@@ -258,12 +258,12 @@
                 </div>
             </div> 
             <div class="hotitle">
-                <h1 v-if="houseName">{{ houseName }}</h1>
+                <h1 v-if="houseName" class="harryP">{{ houseName }}</h1>
                 <p v-if="houseName">{{ houseInfo }}</p>
             </div>
             <!-- Mensaje de bienvenida cuando no se ha seleccionado ninguna casa -->
             <div v-if="!houseName" class="d-flex flex-column align-items-center">
-                <p class="text-light fs-3">SELECT A HOUSE AND DISCOVER THE MEMBERS OF EACH HOUSE!</p>
+                <p class="text-light fs-3 harryP">SELECT A HOUSE AND DISCOVER THE MEMBERS OF EACH HOUSE!</p>
             </div>
             <div v-if="houseName" class="houses">
                 <div class="ecards">

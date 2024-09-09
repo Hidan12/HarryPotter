@@ -1,10 +1,5 @@
 export default {
-<<<<<<< HEAD
     home: "Harry Potter is a series of fantasy novels written by the British author J. K. Rowling, which describes the adventures of the young apprentice of magic and wizardry Harry Potter and his friends Hermione Granger and Ron Weasley, during the years they spend at Hogwarts School. . of Magic and Sorcery. The plot focuses on the fight between Harry Potter and the evil wizard Lord Voldemort, who murdered Harry's parents in his quest to conquer the magical world.",
-=======
-    home: "Harry James Potter is a half-blood wizard and the only son of James and Lily Potter. He is the only known person to have survived the curse of Avada Kedavra, doing so on two occasions. Both times the curse was cast by Lord Voldemort.",
-    characterPage: "The world of Harry Potter is filled with a vast array of magical beings, each with their own unique stories, backgrounds, and qualities. From the brave students of Gryffindor to the cunning members of Slytherin, the curious minds of Ravenclaw, and the loyal hearts of Hufflepuff, every character has a role to play in the saga. Explore the diverse characters that make up this magical universe. Whether you’re searching for your favorite wizard, witch, or magical creature, or discovering new characters along the way, our character section allows you to dive deep into their histories, personalities, and affiliations. Use the filters below to find characters based on their house, species, gender, and more. Begin your journey through the wizarding world and uncover the stories of those who shape it.",
->>>>>>> main
     descriptionHouse: {
         house: {
             description: "Students belonging to each house do not necessarily have all the qualities that characterize each one of them. There are cases in which the Sorting Hat receives students who make it doubt which house they should be assigned to. If the Hat hesitates for more than five minutes, that student is called a Hatstall."
