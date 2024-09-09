@@ -70,8 +70,6 @@ footer{
 }
 
 .ecards img{
-    width: 28vh;
-    height: 27vh;
     object-fit: unset;
 }
 
@@ -93,4 +91,18 @@ footer{
 
 .bg-card-shop{
     background-color: rgba(202, 232, 255, 0.5);;
+}
+
+.card_houses {
+    position: relative;
+    overflow: hidden; 
+    transition: transform 0.3s ease; 
+}
+
+.card_houses:hover {
+    transform: scale(1.1);
+}
+
+.card_houses:hover .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
