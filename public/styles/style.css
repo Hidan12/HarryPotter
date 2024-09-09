@@ -9,12 +9,9 @@
 
 
 
-
-body{
-    font-family:cursive;
-    background-color: var(--color3);
+.body-characters {
+  background-color: var(--color3);
 }
-
 
 .harryP {
     font-family: 'HarryP', sans-serif;
@@ -26,28 +23,38 @@ body{
       1px 1px 0 #000;
 }
 
-header{
-    min-width: 100%;
-    min-height: 10vh;
+body{
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+  cursor: url("../img/cursor.png"), auto;
+}
+button, a, input{
+  cursor: url("../img/cursor.png"), auto !important;
+}
+header {
+  min-width: 100%;
+  min-height: 10vh;
 }
 
-main{
-    max-width: 100%;
-    min-height: 80vh;
+main {
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 80vh;
 }
-footer{
-    max-width: 100%;
-    min-height: 10vh;
-}
-
-.branch{
-    width: 75%;
-    height: 10vh;
+footer {
+  max-width: 100%;
+  min-height: 10vh;
 }
 
-.b-gradient{
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
+.branch {
+  width: 75%;
+  height: 10vh;
+}
+
+.b-gradient {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 90%);
 }
 
 
@@ -85,6 +92,11 @@ footer{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     
+}
+.img-back-card{
+  background-image: url("../img/hogwarts-harry-potter-11461.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 
@@ -233,76 +245,188 @@ input::placeholder{
     background-color: #e9ecef;
   }
   
-  @media (max-width: 720px) {
-    .pagination-nav {
-
-      flex-direction: column; /* Cambia la dirección en pantallas pequeñas */
-      justify-content: center;
-      align-items: center; /* Centra los elementos verticalmente */
-    }
   
-    .pagination {
-      justify-content: center; /* Centra la paginación */
-    }
-  
-    .page-item {
-      margin: 3px; /* Reduce el margen en pantallas pequeñas */
-    }
+      
+.img-back {
+  background-image: url("../img/MFxo.gif");
+  background-size: 100% 100%;
+}
 
-    .text-big{
-        font-size: 300%;
-    }
 
-    #p_description{
-        overflow-y: auto;
-        height: 250px;
-        
-    }
-    
+
+.h-card-cart{
+  min-height: 150px;
+}
+.h-msg-error{
+  height: 300px;
+}
+
+
+.img-slide-shop {
+  height: 100px;
+}
+.body-slide-shop {
+  height: 260px;
+}
+.rounded-card-shop {
+  border-radius: 20%;
+}
+.bg-card-shop {
+  background-color: rgba(202, 232, 255, 0.5);
+}
+.search-input {
+  border-radius: 15px;
+  height: 47px;
+}
+.search-input::placeholder {
+  color: rgb(1, 1, 58);
+}
+.bg-input-search {
+  background: rgb(0, 74, 173);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 74, 173, 0.989233193277311) 0%,
+    rgba(93, 224, 230, 1) 30%
+  ) !important;
+}
+.cont-animation{
+  position: absolute;
+  right: -300px;
+  transform: translateX(100%);
+  animation: slideIn 1s forwards ease;
+ 
+}
+.min-h-card{
+  min-height: 100px;
+}
+.hover-card-shop:hover{
+  background-image: url("../img/gifRayo2.gif");
+  transform: translateY(-10px); /* Mueve la tarjeta hacia arriba 10px */
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 255, 255, 0.5)
+}
+@keyframes slideIn {
+  from {
+      right: -300px;
   }
-  
+  to {
+      right: 45.3%;
+  }
+}
+
+
+
+.h-card-detail{
+  height: 400px;
+}
+.h-detail-img{
+  height: 150px;
+}
+.detail-product-scroll{
+  height: 200px;
+  overflow-y: auto;
+}
+
+.detail-product-scroll::-webkit-scrollbar {
+  width: 0%;
+}
+
+
+.h-card-buy{
+  height: 315px;
+}
+.h-product-buy{
+  height: 9vh;
+}
+.buy-scroll{
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+
+.h-cointeiner-detail{
+  height: 31vh;
+
+}
+.h-p-detail{
+  height: 36%;
+  overflow-y: auto
+}
+
+.animacion-carga{
+  width: 100%;
+  height: 100%;
+  animation: loading 3s forwards ease  
+}
+@keyframes loading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.size-canvas-stats{
+  height: 400px !important;
+  width: 90% !important;
+}
+
+
+
+
+
 
 
 @media (min-width: 720px) {
-    .text-big{
-        font-size: 400%;
-    }
-}    
+  .text-big{
+      font-size: 400%;
+  }
+  .size-canvas-stats{
+    font-size: medium;
+    height: 400px !important;
+    width: 40% !important;
+  }
+  
+}
 
-.modal-custom {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #00000088;
-    display: flex;
+@media (max-width: 720px) {
+  .pagination-nav {
+
+    flex-direction: column; /* Cambia la dirección en pantallas pequeñas */
     justify-content: center;
-    align-items: center;
-    padding: 20%;
-}
-.modal-dialog-custom {
-    width: 400px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    overflow: auto;
+    align-items: center; /* Centra los elementos verticalmente */
+  }
+
+  .pagination {
+    justify-content: center; /* Centra la paginación */
+  }
+
+  .page-item {
+    margin: 3px; /* Reduce el margen en pantallas pequeñas */
+  }
+
+  .text-big{
+      font-size: 300%;
+  }
+
+  #p_description{
+      overflow-y: auto;
+      height: 250px;
+      
+  }
+  
 }
 
-.modal-header {
-    color: #ffa600;
-    display: flex;
-    justify-content: space-between;
-}
+@media (max-width: 992px) {
+  @keyframes slideIn {
+    from {
+        right: -300px;
+    }
+    to {
 
-.modal-title{
-    font-size: 35px;
-}
-
-.spellstitle{
-    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+        right: 96%;
+    }
+  }
+  
 }
