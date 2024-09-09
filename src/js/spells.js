@@ -1,3 +1,4 @@
+import info from "../data/info.js"
 let urlApi= "https://hp-api.onrender.com/api/spells"
 const img = {
   aberto:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3VHGiPtsg5pKOeC9e38e12xUslxe2us5bw&s"
@@ -28,6 +29,17 @@ const app = createApp({
     },
     created(){
       this.getData(urlApi)
+      let storage = JSON.parse(localStorage.getItem("productsaved"))
+    if (storage) {
+      let data = info.products.filter((product) => {
+        if (storage.find(str => str.id == product.id)) {
+          product.add = true
+          this.totalPrice += product.discount ? (product.price * (1 - (product.discount / 100))) : product.price
+          return product
+        }
+      })
+      this.uploadinformation(data)
+    }
         
     },
     methods: {
