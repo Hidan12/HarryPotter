@@ -260,7 +260,7 @@ input::placeholder{
   height: 100px;
 }
 .body-slide-shop {
-  height: 260px;
+  height: 300px;
 }
 .rounded-card-shop {
   border-radius: 20%;
@@ -295,7 +295,7 @@ input::placeholder{
 }
 .hover-card-shop:hover{
   background-image: url("../img/gifRayo2.gif");
-  transform: translateY(-10px); /* Mueve la tarjeta hacia arriba 10px */
+  transform: translateY(-10px);
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 255, 255, 0.5)
 }
 @keyframes slideIn {
@@ -538,3 +538,10 @@ input::placeholder{
 .modal-title{
   font-size: 35px;
 }
+<<<<<<< HEAD
+=======
+.card-character{
+  width: 211px;
+  height: 300px;
+}
+>>>>>>> main
