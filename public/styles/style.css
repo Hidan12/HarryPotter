@@ -27,10 +27,10 @@ body{
   font-family: "Lumanosimo", cursive;
   font-weight: 400;
   font-style: normal;
-  cursor: url("../img/cursor.png"), auto;
+  cursor: url("../img/cursor1.png"), auto;
 }
-button, a, input{
-  cursor: url("../img/cursor.png"), auto !important;
+button, a, input, select{
+  cursor: url("../img/cursor1.png"), auto !important;
 }
 header {
   min-width: 100%;
