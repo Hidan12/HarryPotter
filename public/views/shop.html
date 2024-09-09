@@ -16,10 +16,6 @@
 
 <body>
     <div id="app">
-        <!-- imagen de carga -->
-        <div class="position-absolute z-3 animacion-carga ">
-            <img src="../img/MFxo.gif" class="w-100 h-100 img-load" alt="">
-         </div>
         <header class="b-gradient">
             <nav class="navbar navbar-expand-lg bg-gradient">
                 <div class="container-fluid">
@@ -42,10 +38,10 @@
                                 <a class="nav-link text-light" href="./characters.html">Characters</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/contact.html">Spells</a>
+                                <a class="nav-link text-light" href="./spells.html">Spells</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/stats.html">Stats</a>
+                                <a class="nav-link text-light" href="./stats.html">Stats</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled text-light" href="#">Shop</a>
@@ -67,7 +63,11 @@
                 </div>
             </nav>
         </header>
-        <main class="img-back">
+        <main>
+            <!-- imagen de carga -->
+        <div class="position-absolute z-3 animacion-carga ">
+            <img src="../img/MFxo.gif" class="w-100 h-100 img-load" alt="">
+         </div>
             <!-- modal de detalle -->
             <div v-if="detailProduct.name">
                 <div class="b-gradient rounded-4 col-11 col-md-7 z-2 position-fixed top-50 start-50 translate-middle h-card-detail">
@@ -124,9 +124,78 @@
                     </div>
                 </div>
             </div>
+            <!-- modal de borrar productos-->
+            <div v-if="btnRemove">
+                <div class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
+                    <div class="d-flex justify-content-end">
+                        <button @click="closeremuve()" class="fs-1 mr-3 fw-bold text-warning harryP bg-transparent border-0">x</button>
+                    </div>
+                    <div>
+                        <h4 class="text-light text-center">{{deleteProduct.length > 1 ? 'Are you sure you want to delete the following products?': 'Are you sure you want to delete the following product?'}}</h4>
+                    </div>
+                    <div>
+                        <p class="text-center text-light">Detail of the removal</p>
+                    </div>
+                    <div class="buy-scroll">
+                        <div v-for="(product, index) in deleteProduct" :key="index">
+                            <div class="d-flex justify-content-around my-4 h-product-buy">
+                                <img :src="product.img" class="col-2 object-fit-contain" alt="">
+                                <div class="d-flex flex-row align-items-center col-6 justify-content-between">
+                                    <p class="m-0 text-light">{{product.name}}</p>
+                                    <p class="m-0 text-light">{{product.discount ? (product.price * (1 -
+                                        (product.discount /
+                                        100))).toFixed(1) : product.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center my-3">
+                        <div v-if="deleteProduct.length > 1" class="pe-4">
+                            <button type="button" @click="emptyProduct ()" class="btn btn-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-file-x" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
+                                    </path>
+                                    <path
+                                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
+                                    </path>
+                                </svg>
+                                empty
+                            </button>
+                        </div>
+                        <div v-if="deleteProduct.length == 1" class="pe-4">
+                            <button type="button" @click="removeProduct(deleteProduct[0])" class="btn btn-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
+                                    </path>
+                                    <path
+                                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
+                                    </path>
+                                </svg>
+                                remove
+                            </button>
+                        </div>
+
+                        
+
+                        <button type="button" @click="closeremuve()" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
+                                </path>
+                            </svg>
+                            cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
             <!-- modal de comprar los productos-->
             <div v-if="btnBuy">
-                <div class="b-gradient col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
+                <div class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
                     <div class="d-flex justify-content-end">
                         <button @click="closeBuy()" class="fs-1 mr-3 fw-bold text-warning harryP bg-transparent border-0">x</button>
                     </div>
@@ -137,8 +206,8 @@
                         <p class="text-center text-light">Purchase details</p>
                     </div>
                     <div class="buy-scroll">
-                        <div v-for="(product, index) in ProductSaved" :key="index">
-                            <div class="d-flex justify-content-around">
+                        <div v-for="(product, index) in bkProductSaved" :key="index">
+                            <div class="d-flex justify-content-around my-4 h-product-buy">
                                 <img :src="product.img" class="col-2 object-fit-contain" alt="">
                                 <div class="d-flex flex-row align-items-center col-6 justify-content-between">
                                     <p class="m-0 text-light">{{product.name}}</p>
@@ -151,7 +220,7 @@
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <p class="text-light">Total paid:</p>
-                        <P class="text-light">{{totalPrice.toFixed(1)}}</P>
+                        <P class="text-light">{{BktotalPrice.toFixed(1)}}</P>
                     </div>
                 </div>
             </div>
@@ -182,7 +251,7 @@
                                             (product.discount /
                                             100))).toFixed(1) : product.price}}</p>
                                     </div>
-                                    <button type="button" @click="removeProduct(product)"
+                                    <button type="button" @click="deleteProducts([product])"
                                         class="btn col-3 btn-outline-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
@@ -209,7 +278,7 @@
                                     </svg>
                                     buy
                                 </button>
-                                <button type="button" @click="emptyProduct ()" class="btn btn-danger">
+                                <button type="button" @click="deleteProducts()" class="btn btn-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-file-x" viewBox="0 0 16 16">
                                         <path
@@ -230,67 +299,66 @@
 
 
             </div>
-            <h2 class=" fs-1 text-center harryP text-warning p-4">STORE OFFERS</h2>
             <!-- carrusel -->
-            <div class="d-flex justify-content-center pt-2">
-                <div id="cardCarousel" class="carousel  slide col-12 col-sm-9 col-md-8 col-lg-6" data-bs-ride="carousel"
-                    data-bs-interval="3000">
-                    <div class="carousel-inner px-2">
-                        <div v-for="(slide, index) in productSlider" :key="index"
-                            :class="['carousel-item', { active: index === 0 }]">
-                            <div class="d-flex d-row justify-content-between">
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-6" v-for="(card, idx) in slide" :key="idx">
-                                    <div
-                                        class="card d-row col-12 align-items-center rounded-card-shop m-0 p-0 bg-card-shop">
-                                        <div class="col-5">
-                                            <img :src="card.img"
-                                                class="mt-2 card-img-top object-fit-contain w-100 img-slide-shop rounded-card-shop"
-                                                :alt="card.title">
-                                        </div>
+             <div class="img-back">
+                <h2 class=" fs-1 text-center harryP text-warning p-4">STORE OFFERS</h2>
+                <div class="d-flex justify-content-center py-4" >
+                    <div id="cardCarousel" class="carousel  slide col-12 col-sm-9 col-md-8 col-lg-6" data-bs-ride="carousel"
+                        data-bs-interval="3000">
+                        <div class="carousel-inner px-2">
+                            <div v-for="(slide, index) in productSlider" :key="index"
+                                :class="['carousel-item', { active: index === 0 }]">
+                                <div class="d-flex d-row justify-content-between">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-6" v-for="(card, idx) in slide" :key="idx">
                                         <div
-                                            class="card-body body-slide-shop d-flex flex-column justify-content-between align-items-center">
-                                            <div>
-                                                <h5 class="card-title text-light">{{ card.name }}</h5>
-
-                                                <p class="card-text text-light">
-                                                    Price:
-                                                    <span class="text-decoration-line-through text-danger">{{ card.price
-                                                        }}</span>
-                                                    <span class="ps-3 text-warning">{{ (card.price * (1 - (card.discount /
-                                                        100))).toFixed(1) }}</span>
-                                                </p>
-                                                <div class="h-cointeiner-trunc d-flex flex-column flex-nowrap">
-                                                    <p class="h-p-trunc text-light m-0">{{card.description}}</p>
-                                                    <p @click="clickDetail(card)" class="text-warning">...more</p>
+                                            class="card hover-card-shop d-row col-12 align-items-center rounded-card-shop m-0 p-0 bg-card-shop">
+                                            <div class="col-5">
+                                                <img :src="card.img"
+                                                    class="mt-2 card-img-top object-fit-contain w-100 img-slide-shop rounded-card-shop"
+                                                    :alt="card.title">
+                                            </div>
+                                            <div
+                                                class="card-body body-slide-shop d-flex flex-column justify-content-between align-items-center">
+                                                <div>
+                                                    <h5 class="card-title text-light">{{ card.name }}</h5>
+    
+                                                    <p class="card-text text-light">
+                                                        Price:
+                                                        <span class="text-decoration-line-through text-danger">{{ card.price
+                                                            }}</span>
+                                                        <span class="ps-3 text-warning">{{ (card.price * (1 - (card.discount /
+                                                            100))).toFixed(1) }}</span>
+                                                    </p>
+                                                    <p @click="clickDetail(card)" class="text-warning">click here to see more details</p>
                                                 </div>
+                                                <div v-if="card.add">
+                                                    <button type="button" @click="removeProduct(card) "
+                                                        class="btn btn-danger">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
+                                                            </path>
+                                                            <path
+                                                                d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
+                                                            </path>
+                                                        </svg>
+                                                        remove
+                                                    </button>
+                                                </div>
+                                                <div v-if="!card.add">
+                                                    <button type="button" @click="addProduct(card)" class="btn btn-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
+                                                            </path>
+                                                        </svg>
+                                                        Add
+                                                    </button>
+                                                </div>
+    
                                             </div>
-                                            <div v-if="card.add">
-                                                <button type="button" @click="removeProduct(card) "
-                                                    class="btn btn-danger">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                                        </path>
-                                                        <path
-                                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                                        </path>
-                                                    </svg>
-                                                    remove
-                                                </button>
-                                            </div>
-                                            <div v-if="!card.add">
-                                                <button type="button" @click="addProduct(card)" class="btn btn-success">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
-                                                        </path>
-                                                    </svg>
-                                                    Add
-                                                </button>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -298,101 +366,100 @@
                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
+            
             <!-- zona de cards y filtros -->
-            <div class="filter d-flex flex-column mt-4 justify-content-center align-items-center">
-                <h4 class="text-center fs-1 text-warning harryP">PRODUCTS</h4>
-
-                <!-- contenedor de filtros -->
-                <div class="col-11 col-md-7 mt-3 d-flex flex-row justify-content-between align-items-center">
-                    {{allFilters}}
-                    <!-- buscador por nombre de productos -->
-                    <div class="search-cont col-5 pr-2">
-                        <input v-model="filterSearch" type="text"
-                            class="search-input text-dark bg-input-search text-center w-100" placeholder="SEARCH">
-                    </div>
-                    <!-- filtro por categoria de productos -->
-                    <div class="form-floating col-5">
-                        <select v-model="filterCategory"
-                            class="search-input w-100 text-center bg-input-search selectIndex" id="floatingSelect"
-                            aria-label="Floating label select example">
-                            <option value="">Select category</option>
-                            <option v-for="category in categorys" :value="category">{{ category }}</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- contenedor de cards -->
-                <div class="cont-cards d-flex flex-wrap align-items-center">
-                    <!-- mensaje de productos no disponible -->
-                    <div v-if="products.length == 0" class="d-flex flex-column align-items-center my-4">
-                        <p class="text-light fs-3">As if by magic, the product you were looking for has disappeared.</p>
-                        <img class="h-msg-error col-5"
-                            src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif" alt="">
-                    </div>
-                    <!-- mostrar cards de productos -->
-                    <div class="d-flex flex-row gap-2 flex-wrap justify-content-center mt-4">
-                        <div class="card col-3 d-flex justify-content-center align-items-center rounded-card-shop bg-card-shop  mb-4"
-                            v-for="card in products" style="width: 18rem;">
-                            <img :src="card.img" class="object-fit-contain mt-2 col-5 img-slide-shop" :alt="card.title">
-                            <div
-                                class="card-body body-slide-shop d-flex flex-column justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="card-title text-light">{{ card.name }}</h5>
-                                    <div v-if="card.discount">
-                                        <p class="card-text text-light">
-                                            Price:
-                                            <span class="text-decoration-line-through text-danger">{{ card.price
-                                                }}</span>
-                                            <span class="ps-3 text-warning">{{ (card.price * (1 - (card.discount /
-                                                100))).toFixed(1) }}</span>
-                                        </p>
-                                    </div>
-                                    <div v-if="!card.discount">
-                                        <p class="card-text text-light">
-                                            Price: {{ card.price }}
-                                        </p>
-                                    </div>
-                                    <div class="h-cointeiner-detail d-flex flex-column flex-nowrap mt-3">
-                                        <p class="h-p-detail text-light m-0">{{card.description}}</p>
-                                        <p @click="clickDetail(card)" class="text-warning">...more</p>
-                                    </div>
-                                </div>
-                                <div v-if="card.add">
-                                    <button type="button" @click="removeProduct(card) " class="btn btn-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
-                                            <path
-                                                d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                            </path>
-                                            <path
-                                                d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                            </path>
-                                        </svg>
-                                        remove
-                                    </button>
-                                </div>
-                                <div v-if="!card.add">
-                                    <button type="button" @click="addProduct(card)" class="btn btn-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
-                                            </path>
-                                        </svg>
-                                        Add
-                                    </button>
-                                </div>
-
-                            </div>
+             <div class="img-back-card">
+                <div class="pt-4 filter d-flex flex-column justify-content-center align-items-center img-back-card">
+                    <h4 class="text-center fs-1 text-warning harryP">PRODUCTS</h4>
+    
+                    <!-- contenedor de filtros -->
+                    <div class="col-11 col-md-7 mt-3 d-flex flex-row justify-content-between align-items-center">
+                        {{allFilters}}
+                        <!-- buscador por nombre de productos -->
+                        <div class="search-cont col-5 pr-2">
+                            <input v-model="filterSearch" type="text"
+                                class="search-input text-dark bg-input-search text-center w-100" placeholder="SEARCH">
                         </div>
-
-
-
+                        <!-- filtro por categoria de productos -->
+                        <div class="form-floating col-5">
+                            <select v-model="filterCategory"
+                                class="search-input w-100 text-center bg-input-search selectIndex" id="floatingSelect"
+                                aria-label="Floating label select example">
+                                <option value="">Select category</option>
+                                <option v-for="category in categorys" :value="category">{{ category }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- contenedor de cards -->
+                    <div class="cont-cards d-flex flex-wrap align-items-center">
+                        <!-- mensaje de productos no disponible -->
+                        <div v-if="products.length == 0" class="d-flex flex-column align-items-center my-4">
+                            <p class="text-light fs-3">As if by magic, the product you were looking for has disappeared.</p>
+                            <img class="h-msg-error col-5"
+                                src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif" alt="">
+                        </div>
+                        <!-- mostrar cards de productos -->
+                        <div class="d-flex flex-row gap-2 flex-wrap justify-content-center mt-4">
+                            <div class="card hover-card-shop col-3 d-flex justify-content-center align-items-center rounded-card-shop bg-card-shop  mb-4"
+                                v-for="card in products" style="width: 18rem;">
+                                <img :src="card.img" class="object-fit-contain mt-2 col-5 img-slide-shop" :alt="card.title">
+                                <div
+                                    class="card-body body-slide-shop d-flex flex-column justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="card-title text-light">{{ card.name }}</h5>
+                                        <div v-if="card.discount">
+                                            <p class="card-text text-light">
+                                                Price:
+                                                <span class="text-decoration-line-through text-danger">{{ card.price
+                                                    }}</span>
+                                                <span class="ps-3 text-warning">{{ (card.price * (1 - (card.discount /
+                                                    100))).toFixed(1) }}</span>
+                                            </p>
+                                        </div>
+                                        <div v-if="!card.discount">
+                                            <p class="card-text text-light">
+                                                Price: {{ card.price }}
+                                            </p>
+                                        </div>
+                                        <p @click="clickDetail(card)" class=" m-0 text-warning py-3">click here to see more details</p>
+                                    </div>
+                                    <div v-if="card.add">
+                                        <button type="button" @click="removeProduct(card) " class="btn btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
+                                                </path>
+                                                <path
+                                                    d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
+                                                </path>
+                                            </svg>
+                                            remove
+                                        </button>
+                                    </div>
+                                    <div v-if="!card.add">
+                                        <button type="button" @click="addProduct(card)" class="btn btn-success">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
+                                                </path>
+                                            </svg>
+                                            Add
+                                        </button>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+    
+                        </div>
                     </div>
                 </div>
-            </div>
-
-
+             </div>
+            
         </main>
         <footer class=" b-gradient d-flex flex-row align-items-center justify-content-between col-12">
             <div class="col-3">

@@ -8,8 +8,12 @@ createApp({
             quantityProductSaved: 0, // Cantidad de productos guardados en el carrito.
             clickCarts: false, // Estado del carrito (abierto/cerrado).
             btnBuy: false, // Estado del botón de compra (activo/inactivo).
+            btnRemove: false, // Estado del botón de eliminar producto (activo/inactivo).
+            deleteProduct: [], // Array de productos a eliminar.
+            bkProductSaved: [], // Backup del array de productos guardados en el carrito.
             ProductSaved: [], // Array de productos guardados en el carrito.
             totalPrice: 0, // Precio total de los productos en el carrito.
+            BktotalPrice: 0, // Backup del precio total de los productos en el carrito.
             detailProduct: {}, // Detalle del producto seleccionado.
             bkProducts: [], // Copia de seguridad de todos los productos.
             products: [], // Array de productos a mostrar.
@@ -45,24 +49,44 @@ createApp({
         // Cierra la compra y reinicia los datos del carrito.
         closeBuy() {
             this.btnBuy = !this.btnBuy
+            this.bkProductSaved = []
+            this.BktotalPrice = 0
+        },
+        // Abre o cierra el modal de compra.
+        buyProduct() {
+            this.clickCarts = !this.clickCarts
+            this.btnBuy = !this.btnBuy
             this.products = this.products.map(product => {
                 if (product.add) {
                     product.add = false
                 }
                 return product
             })
+            this.bkProductSaved = [...this.ProductSaved]
             this.ProductSaved = []
             this.quantityProductSaved = 0
+            this.BktotalPrice = this.totalPrice
             this.totalPrice = 0
             localStorage.setItem("productsaved", JSON.stringify([]))
         },
-        // Abre o cierra el modal de compra.
-        buyProduct() {
+        // cierra el modal de eliminación.
+        closeremuve() {
+            this.btnRemove = !this.btnRemove
+        },
+        deleteProducts(product = []) {
+            if (product.length > 0) {
+                this.deleteProduct = product
+            } else {
+                this.deleteProduct = this.ProductSaved
+            }
+            this.btnRemove = !this.btnRemove
             this.clickCarts = !this.clickCarts
-            this.btnBuy = !this.btnBuy
         },
         // Vacía el carrito de productos.
         emptyProduct() {
+            if (this.btnRemove) {
+                this.btnRemove = false
+            }
             this.products = this.products.map(product => {
                 if (product.add) {
                     product.add = false
@@ -88,13 +112,16 @@ createApp({
         },
         // Elimina un producto del carrito.
         removeProduct(card) {
+            if (this.btnRemove) {
+                this.btnRemove = false
+            }
             const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
             audio.play()
             this.totalPrice -= card.discount ? (card.price * (1 - (card.discount / 100))) : card.price
             let indexSaved = this.ProductSaved.findIndex(prod => prod.id === card.id)
             let indexbkProduct = this.bkProducts.findIndex(prod => prod.id === card.id)
             let indexProduct = this.products.findIndex(prod => prod.id === card.id)
-            
+
             if (indexSaved >= 0) {
                 this.ProductSaved.splice(indexSaved, 1)
                 this.products[indexProduct].add = false
@@ -107,7 +134,7 @@ createApp({
         },
         // Abre o cierra el carrito.
         clickCart(location = "") {
-            if (!this.btnBuy && location == "") {
+            if (!this.btnBuy && !this.btnRemove && location == "") {
                 this.clickCarts = !this.clickCarts
                 if (this.clickCarts) {
                     const audio = new Audio("../../public/sound/wing-flap-heavy-prototype-36710.mp3")
