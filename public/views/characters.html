@@ -329,7 +329,7 @@
                 <div class="container-fluid">
                     <div class="m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
                         <div class="card_1" v-for="character in paginatedCharacters" :key="character.id">
-                            <div class="card align-items-center justify-content-end  object-fit-cover h-100"
+                            <div class="card align-items-center justify-content-end  object-fit-cover card-character"
                                 @click="selectCharacter(character)">
                                 <img :src="character.image ? character.image : '../../public/img/Generic.jpg'"
                                     class="card-img-top h-100 object-fit-cover" alt="Image">
