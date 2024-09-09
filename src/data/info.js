@@ -98,7 +98,6 @@ export default {
             name: "Magical Menagerie",
             category: "Wands",
             price: 22.75,
-            discount: 15,
             house: "Gryffindor",
             img: "https://thefilmcell.com/cdn/shop/products/Harry-Potter-Character-Wands.jpg?v=1578331169",
             description: "Magical Menagerie offers this magical wand with a 15% discount. Associated with Gryffindor, this wand is designed to provide powerful and reliable performance. Perfect for young and experienced wizards, it is an excellent addition to any wand collection, ensuring precise and powerful spells."
@@ -155,6 +154,7 @@ export default {
             name: "The Magical Menagerie",
             category: "Wands",
             price: 19.99,
+            discount: 15,
             house: "Hufflepuff",
             img: "https://cdn.waterstones.com/images/00209004-400x400.jpeg",
             description: "The Magical Menagerie presents this finely crafted wand, perfect for Hufflepuff students. Made with high-quality materials, it ensures excellent performance for all types of spells. Ideal for both beginners and experienced wizards, this wand is a reliable tool for any magical endeavor."

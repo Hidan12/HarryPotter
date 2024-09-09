@@ -93,6 +93,11 @@ footer {
     background-size: 100% 100%;
     
 }
+.img-back-card{
+  background-image: url("../img/hogwarts-harry-potter-11461.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
 
 
@@ -273,7 +278,7 @@ input::placeholder{
   height: 100px;
 }
 .body-slide-shop {
-  /* height: 300px; */
+  height: 260px;
 }
 .rounded-card-shop {
   border-radius: 20%;
@@ -306,6 +311,11 @@ input::placeholder{
 .min-h-card{
   min-height: 100px;
 }
+.hover-card-shop:hover{
+  background-image: url("../img/gifRayo2.gif");
+  transform: translateY(-10px); /* Mueve la tarjeta hacia arriba 10px */
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 255, 255, 0.5)
+}
 @keyframes slideIn {
   from {
       right: -300px;
@@ -328,49 +338,41 @@ input::placeholder{
   overflow-y: auto;
 }
 
+.detail-product-scroll::-webkit-scrollbar {
+  width: 0%;
+}
+
+
 .h-card-buy{
   height: 315px;
+}
+.h-product-buy{
+  height: 9vh;
 }
 .buy-scroll{
   max-height: 100px;
   overflow-y: auto;
 }
-.h-cointeiner-trunc{
-  height: 16vh;
-}
-.h-p-trunc{
-  height: 28%;
-  overflow: hidden;
-}
-.description-truncked {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 
 .h-cointeiner-detail{
-  height: 20vh;
+  height: 31vh;
 
 }
 .h-p-detail{
-  height: 38%;
-  overflow: hidden
+  height: 36%;
+  overflow-y: auto
 }
 
 .animacion-carga{
   width: 100%;
   height: 100%;
-  animation: loading 1s forwards ease  
+  animation: loading 3s forwards ease  
 }
 @keyframes loading {
   from {
     opacity: 1;
   }
-  60%{
-    opacity: 0.9;
-  }
-
   to {
     opacity: 0;
     display: none;
@@ -378,7 +380,6 @@ input::placeholder{
 }
 
 .size-canvas-stats{
-  font-size: medium;
   height: 400px !important;
   width: 90% !important;
 }
