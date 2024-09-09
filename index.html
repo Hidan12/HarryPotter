@@ -13,35 +13,37 @@
 
 <body>
     <div id="app">
+        <div id="app">
         <header class="b-gradient">
-            <nav class="navbar navbar-expand-lg bg-gradient">
-                <div class="container-fluid">
-                    <a class="navbar-brand col-2" href="#"><img src="./public/img/logoHeader-removebg-preview.png" alt="" class="branch object-fit-contain"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon bg-light"></span>
-                    </button>
+                <nav class="navbar navbar-expand-lg bg-gradient">
+                    <div class="container-fluid">
+                        <a class="navbar-brand col-2" href="#"><img src="./public/img/logoHeader-removebg-preview.png"
+                            alt="" class="branch object-fit-contain"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon bg-light"></span>
+                        </button>
     
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link disabled text-light" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./public/views/houses.html">Houses</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/pastEvents.html">Characters</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/contact.html">Spells</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/stats.html">Stats</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="./views/stats.html">Shop</a>
-                            </li>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link disabled text-light" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="./public/views/houses.html">Houses</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="./public/views/characters.html">Characters</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="./public/views/spells.html">Spells</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="./views/stats.html">Stats</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="./public/views/shop.html">Shop</a>
+                                </li>
                             <li>
                                 <button type="button" @click="clickCart()" class="btn text-light position-relative">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -54,12 +56,12 @@
                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-secondary">{{quantityProductSaved}}</span>
                                 </button>
                             </li>
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </header>
-        <main id="app" class=" img-back">
+                </nav>
+            </header>
+            <main class=" img-back">
             <div v-if="btnRemove">
                 <div class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
                     <div class="d-flex justify-content-end">
@@ -255,17 +257,19 @@
                     <img src="./public/img/reven-removebg-preview.png" alt="Ravenclaw" />
                 </a>             
             </div>        
-        </main>
-        <footer class=" b-gradient d-flex flex-row align-items-center justify-content-between col-12">
-            <div class="col-3">
-              <img src="./public/img/logoFoter-removebg-preview.png" class="col-6" alt="...">
-            </div>
-            <div>
-              <p class="text-light m-0 px-3">Create By: </p>
-            </div>
-          </footer>
+            </main>
+            <footer class=" b-gradient d-flex flex-row align-items-center justify-content-between col-12">
+                <div class="col-3">
+                    <img src="./public/img/logoFoter-removebg-preview.png" class="col-6" alt="...">
+                </div>
+                <div>
+                    <p class="text-light m-0 px-3">Create By: </p>
+                </div>
+            </footer>
     </div>
     
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
