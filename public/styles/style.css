@@ -118,7 +118,7 @@ input::placeholder{
 }
 
 .card-container-custom {
-    height: 250px;
+    height: 200px;
     width: 200px;
     padding: 20px;
     position: relative;
@@ -159,12 +159,10 @@ input::placeholder{
     font-family: 'HarryP', sans-serif;
     font-size: 35px;
     text-align: center;
-    color: #ffa600;
     line-height: 1.5ch;
 }
 
 .card-wrapper-text {
-    /* flex: 1; */
     height: auto;
     max-height: 100%;
 }
@@ -189,16 +187,6 @@ input::placeholder{
 
 .cardtext-ov::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento */
-}
-
-.cardSpell-s{
-    height: 250px;
-    width: 200px;
-    padding: 20px;
-}
-
-.spellstitle{
-    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
 }
 
 
@@ -280,3 +268,41 @@ input::placeholder{
         font-size: 400%;
     }
 }    
+
+.modal-custom {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00000088;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20%;
+}
+.modal-dialog-custom {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
+.modal-header {
+    color: #ffa600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-title{
+    font-size: 35px;
+}
+
+.spellstitle{
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
