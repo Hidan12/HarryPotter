@@ -24,8 +24,6 @@ const app_characters = createApp({
       clickCarts: false,  // Estado del carrito de compras (abierto/cerrado)
       ProductSaved: [],  // Lista de productos guardados en el carrito
       bkProductSaved: [],
-      btnRemove: false,
-      deleteProduct: [],
       totalPrice: 0,  // Precio total de los productos en el carrito
       BktotalPrice: 0,
       btnBuy: false,  // Estado del botón de compra (activo/inactivo)
@@ -109,22 +107,9 @@ const app_characters = createApp({
       this.totalPrice = 0
       localStorage.setItem("productsaved", JSON.stringify([]))
     },
-    closeremuve() {
-      this.btnRemove = !this.btnRemove
-    },
-    deleteProducts(product = []) {
-      if (product.length > 0) {
-        this.deleteProduct = product
-      } else {
-        this.deleteProduct = this.ProductSaved
-      }
-      this.btnRemove = !this.btnRemove
-      this.clickCarts = !this.clickCarts
-    },
     emptyProduct() {
-      if (this.btnRemove) {
-        this.btnRemove = false
-      }
+      const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
+      audio.play()
       this.ProductSaved = []
       this.quantityProductSaved = 0
       this.totalPrice = 0
@@ -132,9 +117,6 @@ const app_characters = createApp({
 
     },
     removeProduct(card) {
-      if (this.btnRemove) {
-        this.btnRemove = false
-      }
       const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
       audio.play()
       let indexSaved = this.ProductSaved.findIndex(prod => prod.id === card.id);

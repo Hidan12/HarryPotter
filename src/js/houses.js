@@ -19,8 +19,6 @@ createApp({
             clickCarts: false, // Estado de visibilidad del carrito
             ProductSaved: [], // Array para almacenar productos añadidos al carrito
             bkProductSaved: [], // Array de respaldo para productos guardados antes de la compra
-            btnRemove: false, // Estado de visibilidad del botón de eliminar productos
-            deleteProduct: [], // Array para almacenar productos marcados para eliminación
             totalPrice: 0, // Precio total de los productos en el carrito
             BktotalPrice: 0, // Precio total de respaldo antes de la compra
             btnBuy: false, // Estado de visibilidad del botón de compra
@@ -103,9 +101,9 @@ createApp({
         
         // Limpia todos los productos del carrito y restablece los datos relevantes
         emptyProduct() {
-            if (this.btnRemove) {
-                this.btnRemove = false;
-            }
+            // Reproduce un efecto de sonido al eliminar el producto
+            const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3");
+            audio.play();
             this.ProductSaved = [];
             this.quantityProductSaved = 0;
             this.totalPrice = 0;
@@ -114,9 +112,6 @@ createApp({
         
         // Elimina un producto específico del carrito y actualiza el precio total y localStorage
         removeProduct(card) {
-            if (this.btnRemove) {
-                this.btnRemove = false;
-            }
             // Reproduce un efecto de sonido al eliminar el producto
             const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3");
             audio.play();
