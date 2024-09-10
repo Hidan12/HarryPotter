@@ -2,20 +2,28 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags para establecer el conjunto de caracteres y la vista del dispositivo --><!-- Meta tags para establecer el conjunto de caracteres y la vista del dispositivo -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Conexión anticipada para optimizar la carga de fuentes -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Carga de la fuente Lumanosimo desde Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <!-- Estilos de Bootstrap -->
         <link href="https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="./public/styles/style.css">
+    <!-- Icono del sitio web -->
     <link rel="shortcut icon" href="./public/img/logoHeader-removebg-preview.png" type="image/x-icon">
+    <!-- Título de la página -->
     <title>Home</title>
 </head>
 
 <body>
     <div id="app">        
+        <!-- Sección del encabezado -->
         <header class="b-gradient">
                 <nav class="navbar navbar-expand-lg bg-gradient">
                     <div class="container-fluid">
@@ -28,6 +36,7 @@
     
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul class="navbar-nav">
+                                <!-- Enlaces de navegación -->
                                 <li class="nav-item">
                                     <a class="nav-link disabled text-light" href="#">Home</a>
                                 </li>
@@ -238,12 +247,36 @@
     
     
     </div>
+    <!-- titulos de la paguina home -->
             <div class="ehome">
                 <section class="etitle">
                     <img src="./public/img/logoFoter-removebg-preview.png" alt="Harry Poter">
                 </section>
                 <p>{{ homeText }}</p>
             </div>
+            <div>
+                <h2 class="harryP text-warning text-center p-5"> Hogwarts School of Witchcraft and Wizardry is something very emblematic in Harry Potter, know its founders and its members.</h2>
+            </div>
+            <!-- fundadores y descripciones de cada uno -->
+            <div class="text-warning">
+                <div class="d-flex align-items-center m-5">
+                    <img src="./public/img/GodricGryffindor.jpg" alt="GodricGryffindor">
+                    <p class="p-2">{{ founders.GodricGryffindor.description }}</p>
+                </div>
+                <div class="d-flex align-items-center flex-row-reverse m-5">
+                    <img src="./public/img/SalazarSlytherin.jpg" alt="SalazarSlytherin">
+                    <p>{{ founders.SalazarSlytherin.description }}</p>
+                </div>
+                <div class="d-flex align-items-center m-5">
+                    <img src="./public/img/RowenaRavenclaw.jpg" alt="RowenaRavenclaw">
+                    <p class="p-2">{{ founders.RowenaRavenclaw.description }}</p>
+                </div>
+                <div class="d-flex align-items-center flex-row-reverse m-5">
+                    <img src="./public/img/HelgaHufflepuff.jpg" alt="HelgaHufflepuff">
+                    <p>{{ founders.HelgaHufflepuff.description }}</p>
+                </div>
+            </div> 
+            <!-- escudos y mensaje para insitar al cliente a darle click a los escudos de las casas -->
             <div class="text-warning text-center p-3 harryP"><h1>Click on one of the shields and learn more about the world of Harry Porter!</h1></div>
             <div class="linkhouses p-3">
                 <a href="./public/views/houses.html?house=Gryffindor">
