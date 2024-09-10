@@ -318,20 +318,20 @@
                             <div class="d-flex  modal-body-scroll  w-50 flex-column" @wheel="handleWheel">
                                 <ul>
                                     <!-- Información detallada del personaje -->
-                                    <li class="text-light fs-6"><span class="text-card-ch">Especie: {{
-                                            selectedCharacter.species }}</span></li>
-                                    <li class="text-light fs-6"> <span class="text-card-ch">Género: {{
-                                            selectedCharacter.gender }}</span></li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.house"> <span
-                                            class="text-card-ch">Casa: {{ selectedCharacter.house }}</span></li>
-                                    <li class="text-light fs-6"><span class="text-card-ch">Alive: {{
-                                            selectedCharacter.alive ? "Live" : "Dead" }}</span></li>
-                                    <li class="text-light fs-6"><span class="text-card-ch">Wizard: {{
-                                            selectedCharacter.wizard ? "Yes" : "No" }}</span></li>
-                                    <li class="text-light fs-6"><span class="text-card-ch">Hogwarts Student: {{
-                                            selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</span></li>
-                                    <li v-if="selectedCharacter.alternate_names.length > 0" class="text-light fs-6">
-                                        <span class="text-card-ch">Alternate Names:</span>
+                                    <li class="text-light fs-6 text-card-ch"><span class="text-warning">Especie: </span>{{
+                                        selectedCharacter.species }}</li>
+                                    <li class="text-light fs-6 text-card-ch"> <span class="text-warning">Género: </span>{{
+                                        selectedCharacter.gender }}</li>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.house"> <span
+                                            class="text-warning">Casa: </span>{{ selectedCharacter.house }}</li>
+                                    <li class="text-light fs-6 text-card-ch"><span class="text-warning">Alive: </span>{{
+                                        selectedCharacter.alive ? "Live" : "Dead" }}</li>
+                                    <li class="text-light fs-6 text-card-ch"><span class="text-warning">Wizard: </span>{{
+                                        selectedCharacter.wizard ? "Yes" : "No" }}</li>
+                                    <li class="text-light fs-6 text-card-ch"><span class="text-warning">Hogwarts Student: </span>{{
+                                        selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</li>
+                                    <li v-if="selectedCharacter.alternate_names.length > 0" class="text-light fs-6 text-card-ch">
+                                        <span class="text-warning">Alternate Names:</span>
                                         <ul>
                                             <li v-for="(name, index) in selectedCharacter.alternate_names" :key="index"
                                                 class="text-light fs-6"><span class="text-card-ch"></span><span
@@ -339,33 +339,37 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.dateOfBirth"><span
-                                            class="text-card-ch">Date of Birth: {{ selectedCharacter.dateOfBirth
-                                            }}</span>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.dateOfBirth"><span
+                                            class="text-warning">Date of Birth: </span>
+                                            {{ selectedCharacter.dateOfBirth
+                                            }}
                                     </li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.patronus"><span
-                                            class="text-card-ch">Patronus: {{ selectedCharacter.patronus }}</span></li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.yearOfBirth"><span
-                                            class="text-card-ch">Year of Birth: {{ selectedCharacter.yearOfBirth
-                                            }}</span>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.patronus"><span
+                                            class="text-warning">Patronus: </span>{{ selectedCharacter.patronus }}</li>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.yearOfBirth"><span
+                                            class="text-warning">Year of Birth: </span>
+                                            {{ selectedCharacter.yearOfBirth
+                                            }}
                                     </li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.ancestry"><span
-                                            class="text-card-ch">Ancestry: {{ selectedCharacter.ancestry }}</span></li>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.ancestry"><span
+                                            class="text-warning">Ancestry: </span>{{ selectedCharacter.ancestry }}</li>
                                     <li class="text-light fs-6" v-show="selectedCharacter.eyeColour"><span
                                             class="text-card-ch">Eye Colour: {{ selectedCharacter.eyeColour }}</span>
                                     </li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.hairColour"><span
-                                            class="text-card-ch">Hair Colour: {{ selectedCharacter.hairColour }}</span>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.hairColour"><span
+                                            class="text-warning">Hair Colour: </span>
+                                            {{ selectedCharacter.hairColour }}
                                     </li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.wand"><span
-                                            class="text-card-ch">Wand: {{ selectedCharacter.wand.wood }} {{
-                                            selectedCharacter.wand.core }} {{ selectedCharacter.wand.length }}</span>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.wand"><span
+                                            class="text-warning">Wand: </span>
+                                            {{ selectedCharacter.wand.wood }} {{
+                                                selectedCharacter.wand.core }} {{ selectedCharacter.wand.length }}
                                     </li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.hogwartsStaff"><span
-                                            class="text-card-ch">Hogwarts Staff: {{ selectedCharacter.hogwartsStaff
-                                            }}</span></li>
-                                    <li class="text-light fs-6" v-show="selectedCharacter.actor"><span
-                                            class="text-card-ch">Actor: {{ selectedCharacter.actor }}</span></li>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.hogwartsStaff"><span
+                                            class="text-warning">Hogwarts Staff: </span>{{ selectedCharacter.hogwartsStaff
+                                            }}</li>
+                                    <li class="text-light fs-6 text-card-ch" v-show="selectedCharacter.actor"><span
+                                            class="text-warning">Actor: </span>{{ selectedCharacter.actor }}</li>
                                 </ul>
                             </div>
                         </div>

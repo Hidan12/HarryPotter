@@ -18,7 +18,7 @@ const app_characters = createApp({
       selectedGender: '',  // Género seleccionado en el filtro
       selectedHouse: '',  // Casa seleccionada en el filtro
       currentPage: 1,  // Página actual en la paginación
-      itemsPerPage: 30,  // Número de personajes por página
+      itemsPerPage: 18,  // Número de personajes por página
       descriptioncharacter: descriptions.characterPage,  // Descripción del personaje
       quantityProductSaved: 0,  // Cantidad de productos guardados
       clickCarts: false,  // Estado del carrito de compras (abierto/cerrado)
