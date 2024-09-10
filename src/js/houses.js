@@ -59,6 +59,7 @@ createApp({
     watch: {
         // Actualiza la paginación cuando cambia el texto de búsqueda
         filterSearch() {
+            this.currentPage = 1; // Reinicia la página actual cuando cambia el texto de búsqueda
             this.updatePagination();
         }
     },
