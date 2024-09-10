@@ -184,6 +184,15 @@
                         <canvas id="tableStudents" class="size-canvas-stats col-12 col-md-5"></canvas>
                         <canvas id="tableGender" class="size-canvas-stats col-12 col-md-5"></canvas>
                     </div>
+                    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-between col-12">
+                        <canvas id="tableAverage" class="size-canvas-stats col-12 col-md-5"></canvas>
+                        <div class="size-canvas-stats col-12 col-md-5 d-flex flex-column align-items-center">
+                            <h3>Oldest character: {{characterMaxAge.name}}</h3>
+                            <div class="stats-img-chart col-7 ">
+                                <img :src="characterMaxAge.image" class="img-Stats w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
                     
                     <h5 class="text-center harryP text-warning fs-1">Statistics Shop</h5>
                     
