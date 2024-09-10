@@ -85,84 +85,11 @@
             </nav>
         </header>
 
-        <main>
+        <main class="img-back">
             <!-- Imagen de carga -->
-            <div class="position-absolute z-2 animacion-carga ">
+            <div class="position-absolute z-3 animacion-carga ">
                 <img src="../img/gifLoading.gif" class="w-100 h-100" alt="">
             </div>
-
-            <div v-if="btnRemove">
-                <div class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
-                    <div class="d-flex justify-content-end">
-                        <button @click="closeremuve()" class="fs-1 mr-3 fw-bold text-warning harryP bg-transparent border-0">x</button>
-                    </div>
-                    <div>
-                        <h4 class="text-light text-center">{{deleteProduct.length > 1 ? 'Are you sure you want to delete the following products?': 'Are you sure you want to delete the following product?'}}</h4>
-                    </div>
-                    <div>
-                        <p class="text-center text-light">Detail of the removal</p>
-                    </div>
-                    <div class="buy-scroll">
-                        <div v-for="(product, index) in deleteProduct" :key="index">
-                            <div class="d-flex justify-content-around my-4 h-product-buy">
-                                <img :src="product.img" class="col-2 object-fit-contain" alt="">
-                                <div class="d-flex flex-row align-items-center col-6 justify-content-between">
-                                    <p class="m-0 text-light">{{product.name}}</p>
-                                    <p class="m-0 text-light">{{product.discount ? (product.price * (1 -
-                                        (product.discount /
-                                        100))).toFixed(1) : product.price}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center my-3">
-                        <div v-if="deleteProduct.length > 1" class="pe-4">
-                            <button type="button" @click="emptyProduct ()" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-file-x" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                    </path>
-                                    <path
-                                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                    </path>
-                                </svg>
-                                empty
-                            </button>
-                        </div>
-                        <div v-if="deleteProduct.length == 1" class="pe-4">
-                            <button type="button" @click="removeProduct(deleteProduct[0])" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                    </path>
-                                    <path
-                                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                    </path>
-                                </svg>
-                                remove
-                            </button>
-                        </div>
-
-                        
-
-                        <button type="button" @click="closeremuve()" class="btn btn-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
-                                </path>
-                            </svg>
-                            cancel
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-
-
             <!-- modal de comprar los productos-->
             <div v-if="btnBuy">
                 <div
@@ -223,7 +150,7 @@
                                             (product.discount /
                                             100))).toFixed(1) : product.price}}</p>
                                     </div>
-                                    <button type="button" @click="deleteProducts([product])"
+                                    <button type="button" @click="removeProduct(product)"
                                         class="btn col-3 btn-outline-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
@@ -250,7 +177,7 @@
                                     </svg>
                                     buy
                                 </button>
-                                <button type="button" @click="deleteProducts()" class="btn btn-danger">
+                                <button type="button" @click="emptyProduct()" class="btn btn-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-file-x" viewBox="0 0 16 16">
                                         <path
@@ -280,7 +207,7 @@
                     <!-- Título principal -->
                     <h1 class="text-warning text-center harryP  pt-5 fw-bold text-big">CHARACTERS</h1>
 
-                    <section class="img-back border rounded border-dark">
+                    <section class=" border rounded border-dark">
                         <h3 class="harryP fs-1 text-light text-center pt-3">Characters of the Wizarding World</h3>
                         <p class="text-light fs-4 bg-dark bg-opacity-25 text-center" id="p_description">
                             {{descriptioncharacter}}</p>
@@ -313,13 +240,14 @@
 
                     <!-- Campo de búsqueda -->
                     <label for="search" class="d-flex col-12 col-md-3 col-lg-2 align-items-center">
-                        <input type="text" v-model="search" id="search" class="text-light m-2 form-control"
+                        <input type="text" v-model="search" id="search-ch" class="m-2 form-control"
                             placeholder="Search" aria-label="Search">
                     </label>
                 </div>
-
-                <!-- Mensaje cuando no hay personajes -->
-                <div v-if="paginatedCharacters.length == 0" class="d-flex flex-column align-items-center my-4">
+                
+                <div class="cont-cards d-flex flex-wrap align-items-center justify-content-center">
+                    <!-- Mensaje cuando no hay personajes -->
+                <div v-if="Characters.length == 0" class="d-flex flex-column align-items-center my-4">
                     <p class="text-light fs-3">As if by magic, the product you were looking for has disappeared.</p>
                     <img class="h-msg-error col-5" src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif"
                         alt="">
@@ -327,9 +255,9 @@
 
                 <!-- Lista de personajes -->
                 <div class="container-fluid">
-                    <div class="m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
-                        <div class="card_1" v-for="character in paginatedCharacters" :key="character.id">
-                            <div class="card align-items-center justify-content-end  object-fit-cover card-character"
+                    <div class="m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6">
+                        <div class="card_1" v-for="character in Characters" :key="character.id">
+                            <div class="card h-100 align-items-center justify-content-end"
                                 @click="selectCharacter(character)">
                                 <img :src="character.image ? character.image : 'https://i.pinimg.com/originals/70/2e/56/702e56ce4e70e4cb7f5eddc83fe8b40b.jpg'"
                                     class="card-img-top h-100 object-fit-cover" alt="Image">
@@ -340,6 +268,9 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                
+
             </div>
 
             <!-- Paginación -->
@@ -359,75 +290,81 @@
                 </nav>
             </div>
 
+
+
+            
             <!-- Modal centrado verticalmente -->
-            <div v-if="selectedCharacter" class="z-1 modal fade d-block show">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content b-gradient d-flex">
-                        <div class="d-flex p-2 container-fluid justify-content-end">
-                            <button type="button " class="close bg-transparent border-0"
+            <div v-if="selectedCharacter" class="modal  fade d-block show">
+                <div class="modal-dialog modal-char  modal-dialog-centered">
+                    <div class="modal-content d-flex b-gradient d-flex">
+
+                        <div class="d-flex align-items-center justify-content-center">
+
+                            <h1 class="modal-title text-modal-ch text-warning harryP">{{ selectedCharacter.name }}</h1>
+
+                        <button type="button " class="close btn-modal-ch bg-transparent border-0"
                                 @click="selectedCharacter = null">
                                 <span class="harryP text-warning fs-1">X</span>
-                            </button>
+                        </button>
                         </div>
-                        <h3 class="text-center text-warning harryP fs-1">{{ selectedCharacter.name }}</h3>
-
+                        
                         <div class="d-flex justify-content-center align-items-center">
                             <div class="w-50">
                                 <img :src="selectedCharacter.image ? selectedCharacter.image : 'https://i.pinimg.com/originals/70/2e/56/702e56ce4e70e4cb7f5eddc83fe8b40b.jpg'"
-                                    class="card-img-top border img-card-ch rounded-4 object-fit-cover img-fluid"
+                                    class="card-img-top border img-card-ch  rounded-4 object-fit-cover img-fluid"
                                     alt="...">
                             </div>
 
                             <div class="d-flex  modal-body-scroll  w-50 flex-column" @wheel="handleWheel">
                                 <ul>
                                     <!-- Información detallada del personaje -->
-                                    <li class="text-light fs-5"><span class="text-card-ch">Especie: {{
+                                    <li class="text-light fs-6"><span class="text-card-ch">Especie: {{
                                             selectedCharacter.species }}</span></li>
-                                    <li class="text-light fs-5"> <span class="text-card-ch">Género: {{
+                                    <li class="text-light fs-6"> <span class="text-card-ch">Género: {{
                                             selectedCharacter.gender }}</span></li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.house"> <span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.house"> <span
                                             class="text-card-ch">Casa: {{ selectedCharacter.house }}</span></li>
-                                    <li class="text-light fs-5"><span class="text-card-ch">Alive: {{
+                                    <li class="text-light fs-6"><span class="text-card-ch">Alive: {{
                                             selectedCharacter.alive ? "Live" : "Dead" }}</span></li>
-                                    <li class="text-light fs-5"><span class="text-card-ch">Wizard: {{
+                                    <li class="text-light fs-6"><span class="text-card-ch">Wizard: {{
                                             selectedCharacter.wizard ? "Yes" : "No" }}</span></li>
-                                    <li class="text-light fs-5"><span class="text-card-ch">Hogwarts Student: {{
+                                    <li class="text-light fs-6"><span class="text-card-ch">Hogwarts Student: {{
                                             selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</span></li>
-                                    <li v-if="selectedCharacter.alternate_names.length > 0" class="text-light fs-5">
+                                    <li v-if="selectedCharacter.alternate_names.length > 0" class="text-light fs-6">
                                         <span class="text-card-ch">Alternate Names:</span>
                                         <ul>
                                             <li v-for="(name, index) in selectedCharacter.alternate_names" :key="index"
-                                                class="text-light fs-5"><span class="text-card-ch"></span><span
+                                                class="text-light fs-6"><span class="text-card-ch"></span><span
                                                     class="text-card-ch">{{ name }}</span>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.dateOfBirth"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.dateOfBirth"><span
                                             class="text-card-ch">Date of Birth: {{ selectedCharacter.dateOfBirth
                                             }}</span>
                                     </li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.patronus"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.patronus"><span
                                             class="text-card-ch">Patronus: {{ selectedCharacter.patronus }}</span></li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.yearOfBirth"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.yearOfBirth"><span
                                             class="text-card-ch">Year of Birth: {{ selectedCharacter.yearOfBirth
                                             }}</span>
                                     </li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.ancestry"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.ancestry"><span
                                             class="text-card-ch">Ancestry: {{ selectedCharacter.ancestry }}</span></li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.eyeColour"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.eyeColour"><span
                                             class="text-card-ch">Eye Colour: {{ selectedCharacter.eyeColour }}</span>
                                     </li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.hairColour"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.hairColour"><span
                                             class="text-card-ch">Hair Colour: {{ selectedCharacter.hairColour }}</span>
                                     </li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.wand"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.wand"><span
                                             class="text-card-ch">Wand: {{ selectedCharacter.wand.wood }} {{
                                             selectedCharacter.wand.core }} {{ selectedCharacter.wand.length }}</span>
                                     </li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.hogwartsStaff"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.hogwartsStaff"><span
                                             class="text-card-ch">Hogwarts Staff: {{ selectedCharacter.hogwartsStaff
                                             }}</span></li>
-                                    <li class="text-light fs-5" v-show="selectedCharacter.actor"><span
+                                    <li class="text-light fs-6" v-show="selectedCharacter.actor"><span
                                             class="text-card-ch">Actor: {{ selectedCharacter.actor }}</span></li>
                                 </ul>
                             </div>
