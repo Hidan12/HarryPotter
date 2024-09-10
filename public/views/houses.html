@@ -34,12 +34,13 @@
         <header class="b-gradient">
             <nav class="navbar navbar-expand-lg bg-gradient">
                 <div class="container-fluid">
-                    <a class="navbar-brand col-2" href="#"><img src="../img/logoHeader-removebg-preview.png" alt="" class="branch object-fit-contain"></a>
+                    <a class="navbar-brand col-2" href="#"><img src="../img/logoHeader-removebg-preview.png" alt=""
+                            class="branch object-fit-contain"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon bg-light"></span>
                     </button>
-    
+
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul class="navbar-nav">
                             <!-- Enlaces de navegación -->
@@ -79,19 +80,23 @@
             </nav>
         </header>
         <main id="app" class="img-back">
-            <div v-if="btnRemove">
-                <div class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
+
+            <!-- modal de comprar los productos-->
+            <div v-if="btnBuy">
+                <div
+                    class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
                     <div class="d-flex justify-content-end">
-                        <button @click="closeremuve()" class="fs-1 mr-3 fw-bold text-warning harryP bg-transparent border-0">x</button>
+                        <button @click="closeBuy()"
+                            class="fs-1 mr-3 fw-bold text-warning harryP bg-transparent border-0">x</button>
                     </div>
                     <div>
-                        <h4 class="text-light text-center">{{deleteProduct.length > 1 ? 'Are you sure you want to delete the following products?': 'Are you sure you want to delete the following product?'}}</h4>
+                        <h4 class="text-light text-center">Thank you for shopping in our store,</h4>
                     </div>
                     <div>
-                        <p class="text-center text-light">Detail of the removal</p>
+                        <p class="text-center text-light">Purchase details</p>
                     </div>
                     <div class="buy-scroll">
-                        <div v-for="(product, index) in deleteProduct" :key="index">
+                        <div v-for="(product, index) in bkProductSaved" :key="index">
                             <div class="d-flex justify-content-around my-4 h-product-buy">
                                 <img :src="product.img" class="col-2 object-fit-contain" alt="">
                                 <div class="d-flex flex-row align-items-center col-6 justify-content-between">
@@ -103,158 +108,91 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center my-3">
-                        <div v-if="deleteProduct.length > 1" class="pe-4">
-                            <button type="button" @click="emptyProduct ()" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-file-x" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                    </path>
-                                    <path
-                                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                    </path>
-                                </svg>
-                                empty
-                            </button>
-                        </div>
-                        <div v-if="deleteProduct.length == 1" class="pe-4">
-                            <button type="button" @click="removeProduct(deleteProduct[0])" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-file-x" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                    </path>
-                                    <path
-                                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                    </path>
-                                </svg>
-                                remove
-                            </button>
-                        </div>
-    
-                        
-    
-                        <button type="button" @click="closeremuve()" class="btn btn-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
-                                </path>
-                            </svg>
-                            cancel
-                        </button>
+                    <div class="d-flex justify-content-center mt-3">
+                        <p class="text-light">Total paid:</p>
+                        <P class="text-light">{{BktotalPrice.toFixed(1)}}</P>
                     </div>
                 </div>
             </div>
-    <!-- modal de comprar los productos-->
-    <div v-if="btnBuy">
-        <div class="b-gradient d-flex flex-column justify-content-evenly col-8 z-1 position-absolute top-50 start-50 translate-middle h-card-buy">
-            <div class="d-flex justify-content-end">
-                <button @click="closeBuy()" class="fs-1 mr-3 fw-bold text-warning harryP bg-transparent border-0">x</button>
-            </div>
-            <div>
-                <h4 class="text-light text-center">Thank you for shopping in our store,</h4>
-            </div>
-            <div>
-                <p class="text-center text-light">Purchase details</p>
-            </div>
-            <div class="buy-scroll">
-                <div v-for="(product, index) in bkProductSaved" :key="index">
-                    <div class="d-flex justify-content-around my-4 h-product-buy">
-                        <img :src="product.img" class="col-2 object-fit-contain" alt="">
-                        <div class="d-flex flex-row align-items-center col-6 justify-content-between">
-                            <p class="m-0 text-light">{{product.name}}</p>
-                            <p class="m-0 text-light">{{product.discount ? (product.price * (1 -
-                                (product.discount /
-                                100))).toFixed(1) : product.price}}</p>
+            <!-- carrito de compra -->
+            <div v-if="clickCarts"
+                class="z-1 min-h-card col-11 col-md-7 col-lg-5 mostrar d-flex flex-row-reverse flex-lg-row align-items-center cont-animation justify-content-between">
+                <img class="col-2"
+                    src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmVwd2R4dTloZDlwcWt5eWhhNXFudWM1NXFsY3VkcWQ0cHdrbzBlOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/YSfGv0WySZm3Jesbn6/giphy.webp"
+                    alt="">
+                <!-- contenedor de productos -->
+                <div class="min-h-card justify-content-around b-gradient col-11 d-flex align-items-center">
+                    <!-- mostrar mensaje en caso de no tener productos guardados -->
+                    <div class="col-12 p-4" v-if="ProductSaved.length == 0">
+                        <div>
+                            <p class="m-0 ps-2 text-light">There are no products saved, <a href="./shop.html">select
+                                    here</a> to go to the store</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center mt-3">
-                <p class="text-light">Total paid:</p>
-                <P class="text-light">{{BktotalPrice.toFixed(1)}}</P>
-            </div>
-        </div>
-    </div>
-    <!-- carrito de compra -->
-    <div v-if="clickCarts"
-        class="z-1 min-h-card col-11 col-md-7 col-lg-5 mostrar d-flex flex-row-reverse flex-lg-row align-items-center cont-animation justify-content-between">
-        <img class="col-2"
-            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmVwd2R4dTloZDlwcWt5eWhhNXFudWM1NXFsY3VkcWQ0cHdrbzBlOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/YSfGv0WySZm3Jesbn6/giphy.webp"
-            alt="">
-        <!-- contenedor de productos -->
-        <div class="min-h-card justify-content-around b-gradient col-11 d-flex align-items-center">
-            <!-- mostrar mensaje en caso de no tener productos guardados -->
-            <div class="col-12 p-4" v-if="ProductSaved.length == 0">
-                <div>
-                    <p class="m-0 ps-2 text-light">There are no products saved, <a href="./shop.html">select here</a> to go to the store</p>
-                </div>
-            </div>
-            <!-- mostrar los productos guardados -->
-            <div class="d-flex flex-column col-11">
-                <div v-if="ProductSaved.length > 0">
-                    <div v-for="(product, index) in ProductSaved" :key="index"
-                        class="b-gradient my-3 d-flex flex-column justify-content-between">
-                        <div class="d-flex justify-content-between">
-                            <img :src="product.img" class="col-2 object-fit-contain" alt="">
-                            <div class="d-flex flex-row align-items-center col-6 justify-content-between">
-                                <p class="m-0 text-light">{{product.name}}</p>
-                                <p class="m-0 text-light">{{product.discount ? (product.price * (1 -
-                                    (product.discount /
-                                    100))).toFixed(1) : product.price}}</p>
+                    <!-- mostrar los productos guardados -->
+                    <div class="d-flex flex-column col-11">
+                        <div v-if="ProductSaved.length > 0">
+                            <div v-for="(product, index) in ProductSaved" :key="index"
+                                class="b-gradient my-3 d-flex flex-column justify-content-between">
+                                <div class="d-flex justify-content-between">
+                                    <img :src="product.img" class="col-2 object-fit-contain" alt="">
+                                    <div class="d-flex flex-row align-items-center col-6 justify-content-between">
+                                        <p class="m-0 text-light">{{product.name}}</p>
+                                        <p class="m-0 text-light">{{product.discount ? (product.price * (1 -
+                                            (product.discount /
+                                            100))).toFixed(1) : product.price}}</p>
+                                    </div>
+                                    <button type="button" @click="removeProduct(product)"
+                                        class="btn col-3 btn-outline-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path
+                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708">
+                                            </path>
+                                        </svg>
+                                        remove
+                                    </button>
+                                </div>
                             </div>
-                            <button type="button" @click="deleteProducts([product])"
-                                class="btn col-3 btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708">
-                                    </path>
-                                </svg>
-                                remove
-                            </button>
+                            <div class="border-top  border-2 d-flex justify-content-around">
+                                <p class="text-light">Total</p>
+                                <p class="text-light">{{totalPrice.toFixed(1)}}</p>
+                            </div>
+                            <!-- botones -->
+                            <div class="d-flex justify-content-around pb-4">
+                                <button type="button" @click=" buyProduct()" class="btn btn-success">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
+                                        </path>
+                                    </svg>
+                                    buy
+                                </button>
+                                <button type="button" @click="emptyProduct()" class="btn btn-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-file-x" viewBox="0 0 16 16">
+                                        <path
+                                            d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
+                                        </path>
+                                        <path
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
+                                        </path>
+                                    </svg>
+                                    empty
+                                </button>
+
+                            </div>
+
                         </div>
                     </div>
-                    <div class="border-top  border-2 d-flex justify-content-around">
-                        <p class="text-light">Total</p>
-                        <p class="text-light">{{totalPrice.toFixed(1)}}</p>
-                    </div>
-                    <!-- botones -->
-                    <div class="d-flex justify-content-around pb-4">
-                        <button type="button" @click=" buyProduct()" class="btn btn-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z">
-                                </path>
-                            </svg>
-                            buy
-                        </button>
-                        <button type="button" @click="deleteProducts()" class="btn btn-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-file-x" viewBox="0 0 16 16">
-                                <path
-                                    d="M6.146 6.146a.5.5 0 0 1 .708 0L8 7.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 8l1.147 1.146a.5.5 0 0 1-.708.708L8 8.707 6.854 9.854a.5.5 0 0 1-.708-.708L7.293 8 6.146 6.854a.5.5 0 0 1 0-.708">
-                                </path>
-                                <path
-                                    d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1">
-                                </path>
-                            </svg>
-                            empty
-                        </button>
-    
-                    </div>
-    
                 </div>
+
+
             </div>
-        </div>
-    
-    
-    </div>
             <div class="d-flex justify-content-center titlehouses p-5">
-                <img src="https://images.tbs.com/tbs/e_trim/https%3A%2F%2Fi.cdn.tbs.com%2Fassets%2Fimages%2F2021%2F12%2FHTOH-WhiteLogo-900x360.png" alt="image">
+                <img src="https://images.tbs.com/tbs/e_trim/https%3A%2F%2Fi.cdn.tbs.com%2Fassets%2Fimages%2F2021%2F12%2FHTOH-WhiteLogo-900x360.png"
+                    alt="image">
             </div>
             <div class="linkhouses p-2">
                 <a href="#" @click.prevent="showHouse('Gryffindor')">
@@ -262,20 +200,20 @@
                 </a>
                 <a href="#" @click.prevent="showHouse('Slytherin')">
                     <img src="../img/SLYTHE-removebg-preview.png" alt="Slytherin" />
-                </a> 
+                </a>
                 <a href="#" @click.prevent="showHouse('Hufflepuff')">
                     <img src="../img/HUFFLE-removebg-preview.png" alt="Hufflepuff" />
-                </a> 
+                </a>
                 <a href="#" @click.prevent="showHouse('Ravenclaw')">
                     <img src="../img/reven-removebg-preview.png" alt="Ravenclaw" />
-                </a>                      
-            </div> 
+                </a>
+            </div>
             <div class="d-flex justify-content-around text-white p-5">
                 <div class="search-cont col-5 pr-2">
                     <input v-model="filterSearch" type="text"
                         class="search-input text-light bg-input-search text-center w-100" placeholder="search">
                 </div>
-            </div> 
+            </div>
             <div class="hotitle">
                 <h1 v-if="houseName" class="harryP">{{ houseName }}</h1>
                 <p v-if="houseName">{{ houseInfo }}</p>
@@ -287,12 +225,15 @@
             <div v-if="houseName" class="houses">
                 <div class="ecards">
                     <div class="container-fluid">
-                        <div class="d-flex justify-content-center m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
+                        <div
+                            class="d-flex justify-content-center m-3 row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6">
                             <div class="card_1" v-for="character in paginatedCharacters" :key="character.id">
-                                <div class="card align-items-center justify-content-end object-fit-cover h-100 card_houses" @click="selectCharacter(character)">
+                                <div class="card align-items-center justify-content-end object-fit-cover h-100 card_houses"
+                                    @click="selectCharacter(character)">
                                     <img :src="character.image ? character.image : '../../public/img/Generic.jpg'"
                                         class="card-img-top h-100 object-fit-cover" alt="Image">
-                                    <h4 class="position-absolute harryP text-warning text-center fw-bold card-title">{{ character.name }}</h4>
+                                    <h4 class="position-absolute harryP text-warning text-center fw-bold card-title">{{
+                                        character.name }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -312,12 +253,13 @@
                             </ul>
                         </nav>
                     </div>
-        <!-- // modal -->
+                    <!-- // modal -->
                     <div v-if="selectedCharacter" class="modal fade d-block show">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content b-gradient d-flex">
                                 <div class="d-flex p-2 container-fluid justify-content-end">
-                                    <button type="button" class="close bg-transparent border-0" @click="selectedCharacter = null">
+                                    <button type="button" class="close bg-transparent border-0"
+                                        @click="selectedCharacter = null">
                                         <span class="harryP text-warning fs-1">X</span>
                                     </button>
                                 </div>
@@ -331,20 +273,35 @@
                                         <ul>
                                             <li class="text-light fs-4"> Especie: {{ selectedCharacter.species }}</li>
                                             <li class="text-light fs-4"> Género: {{ selectedCharacter.gender }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.house"> Casa: {{ selectedCharacter.house }}</li>
-                                            <li class="text-light fs-4">Alive: {{ selectedCharacter.alive ? "Live" : "Dead" }}</li>
-                                            <li class="text-light fs-4">Wizard: {{ selectedCharacter.wizard ? "Yes" : "No" }}</li>
-                                            <li class="text-light fs-4">Hogwarts Student: {{ selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</li>
-                                            <li class="text-light fs-4">Alternate Names: {{ selectedCharacter.alternate_names }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.dateOfBirth">Date of Birth: {{ selectedCharacter.dateOfBirth }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.patronus">Patronus: {{ selectedCharacter.patronus }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.yearOfBirth">Year of Birth: {{ selectedCharacter.yearOfBirth }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.ancestry">Ancestry: {{ selectedCharacter.ancestry }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.eyeColour">Eye Colour: {{ selectedCharacter.eyeColour }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.hairColour">Hair Colour: {{ selectedCharacter.hairColour }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.wand">Wand: {{ selectedCharacter.wand.wood }} {{ selectedCharacter.wand.core }} {{ selectedCharacter.wand.length }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.hogwartsStaff">Hogwarts Staff: {{ selectedCharacter.hogwartsStaff }}</li>
-                                            <li class="text-light fs-4" v-show="selectedCharacter.actor">Actor: {{ selectedCharacter.actor }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.house"> Casa: {{
+                                                selectedCharacter.house }}</li>
+                                            <li class="text-light fs-4">Alive: {{ selectedCharacter.alive ? "Live" :
+                                                "Dead" }}</li>
+                                            <li class="text-light fs-4">Wizard: {{ selectedCharacter.wizard ? "Yes" :
+                                                "No" }}</li>
+                                            <li class="text-light fs-4">Hogwarts Student: {{
+                                                selectedCharacter.hogwartsStudent ? "Yes" : "No" }}</li>
+                                            <li class="text-light fs-4">Alternate Names: {{
+                                                selectedCharacter.alternate_names }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.dateOfBirth">Date of
+                                                Birth: {{ selectedCharacter.dateOfBirth }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.patronus">Patronus: {{
+                                                selectedCharacter.patronus }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.yearOfBirth">Year of
+                                                Birth: {{ selectedCharacter.yearOfBirth }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.ancestry">Ancestry: {{
+                                                selectedCharacter.ancestry }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.eyeColour">Eye Colour:
+                                                {{ selectedCharacter.eyeColour }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.hairColour">Hair
+                                                Colour: {{ selectedCharacter.hairColour }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.wand">Wand: {{
+                                                selectedCharacter.wand.wood }} {{ selectedCharacter.wand.core }} {{
+                                                selectedCharacter.wand.length }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.hogwartsStaff">
+                                                Hogwarts Staff: {{ selectedCharacter.hogwartsStaff }}</li>
+                                            <li class="text-light fs-4" v-show="selectedCharacter.actor">Actor: {{
+                                                selectedCharacter.actor }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -353,22 +310,23 @@
                     </div>
                 </div>
                 <div v-if="houseName && filteredCharacters.length === 0" class="d-flex flex-column align-items-center">
-                    <p class="text-light fs-3">In the magical world there are many results but yours cannot be found.</p>
+                    <p class="text-light fs-3">In the magical world there are many results but yours cannot be found.
+                    </p>
                     <img src="https://media.tenor.com/LdZ2PINzYr4AAAAi/harry-potter-harry.gif" alt="">
                 </div>
             </div>
         </main>
-          
+
         <footer class=" b-gradient d-flex flex-row align-items-center justify-content-between col-12">
             <div class="col-3">
-              <img src="../img/logoFoter-removebg-preview.png" class="col-6" alt="...">
+                <img src="../img/logoFoter-removebg-preview.png" class="col-6" alt="...">
             </div>
             <div>
-              <p class="text-light m-0 px-3">Create By: </p>
+                <p class="text-light m-0 px-3">Create By: </p>
             </div>
-          </footer>
+        </footer>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

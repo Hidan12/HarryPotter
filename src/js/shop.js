@@ -8,8 +8,7 @@ createApp({
             quantityProductSaved: 0, // Cantidad de productos guardados en el carrito.
             clickCarts: false, // Estado del carrito (abierto/cerrado).
             btnBuy: false, // Estado del botón de compra (activo/inactivo).
-            btnRemove: false, // Estado del botón de eliminar producto (activo/inactivo).
-            deleteProduct: [], // Array de productos a eliminar.
+            
             bkProductSaved: [], // Backup del array de productos guardados en el carrito.
             ProductSaved: [], // Array de productos guardados en el carrito.
             totalPrice: 0, // Precio total de los productos en el carrito.
@@ -69,24 +68,10 @@ createApp({
             this.totalPrice = 0
             localStorage.setItem("productsaved", JSON.stringify([]))
         },
-        // cierra el modal de eliminación.
-        closeremuve() {
-            this.btnRemove = !this.btnRemove
-        },
-        deleteProducts(product = []) {
-            if (product.length > 0) {
-                this.deleteProduct = product
-            } else {
-                this.deleteProduct = this.ProductSaved
-            }
-            this.btnRemove = !this.btnRemove
-            this.clickCarts = !this.clickCarts
-        },
         // Vacía el carrito de productos.
         emptyProduct() {
-            if (this.btnRemove) {
-                this.btnRemove = false
-            }
+            const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
+            audio.play()
             this.products = this.products.map(product => {
                 if (product.add) {
                     product.add = false
@@ -112,9 +97,6 @@ createApp({
         },
         // Elimina un producto del carrito.
         removeProduct(card) {
-            if (this.btnRemove) {
-                this.btnRemove = false
-            }
             const audio = new Audio("../../public/sound/transitional-swipe-3-211685.mp3")
             audio.play()
             this.totalPrice -= card.discount ? (card.price * (1 - (card.discount / 100))) : card.price
