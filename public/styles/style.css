@@ -74,10 +74,16 @@ footer {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px; /* Opcional: para dar bordes redondeados */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra base */
+  
+    
   }
+
+  
   
   .card_1 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    
   }
   
   /* Efecto de sobrealzado cuando se pasa el mouse */
@@ -89,14 +95,18 @@ footer {
 .img-back{
     
     background-image: url("../img/MFxo.gif");
+    background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-position: center
     
 }
 .img-back-card{
   background-image: url("../img/hogwarts-harry-potter-11461.webp");
+  background-size: cover;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-position: center;
 }
 
 
@@ -113,9 +123,10 @@ footer {
 }
 
 input::placeholder{
-    color: white;
+    color: black;
     text-align: center;
 }
+
 .bg-input-search{
     background: rgb(0,74,173);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(53,51,205,1) 40%);
@@ -190,7 +201,6 @@ input::placeholder{
     height: auto; /* Dejar que la altura sea automática */
 }
 
-
 .cardtext-ov::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento */
 }
@@ -215,7 +225,7 @@ input::placeholder{
     display: none; /* Para navegadores basados en WebKit como Chrome y Safari */
 }
 
-#search{
+#search-ch{
     background: var(--color2);
 }
 
@@ -272,6 +282,7 @@ input::placeholder{
   border-radius: 15px;
   height: 47px;
 }
+
 .search-input::placeholder {
   color: rgb(1, 1, 58);
 }
@@ -349,7 +360,7 @@ input::placeholder{
 .animacion-carga{
   width: 100%;
   height: 100%;
-  animation: loading 3s forwards ease  
+  animation: loading 4s forwards ease  
 }
 @keyframes loading {
   from {
@@ -382,15 +393,42 @@ input::placeholder{
     width: 40% !important;
   }
   
+  .card_1 .card {
+    
+    max-height: 400px;
+    min-width: 200px;
+  }
+
+  .modal-char{
+    min-width: 599px;  
+    max-width: 600px;
+  }
+  .btn-modal-ch{
+    translate: 250px;
+    position: absolute;
+  }
 }
 
-@media (max-width: 720px) {
+
+
+@media (max-width: 719px) {
   .pagination-nav {
 
     flex-direction: column; /* Cambia la dirección en pantallas pequeñas */
     justify-content: center;
     align-items: center; /* Centra los elementos verticalmente */
   }
+
+  .text-modal-ch{
+    padding-left: 37%;
+  }
+
+  .btn-modal-ch{
+    margin-left: auto;
+    
+  }
+
+  
 
   .pagination {
     justify-content: center; /* Centra la paginación */
@@ -538,7 +576,4 @@ input::placeholder{
 .modal-title{
   font-size: 35px;
 }
-.card-character{
-  width: 211px;
-  height: 300px;
-}
+
