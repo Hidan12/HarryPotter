@@ -18,6 +18,21 @@ export default {
             description: `Slytherin House is characterized primarily by ambition and cunning. It was founded by the wizard Salazar Slytherin. The Common Room is located in the dungeons, passing through a series of numerous underground passages. Possibly it is reached through the Hogwarts Hall. Specifically it is located under the Black Lake, making the common room cold and with a greenish hue, since there are windows that look out onto the waters. It is accessed through a highly concealed door in a stone wall, saying a password required. The only known one is "Pureblood". Its main relic is Salazar Slytherin's locket. The representative animal is the snake, its colors are green and silver and the element is water, associated with cunning and coldness.`
         }
     },
+
+    founders: {
+        GodricGryffindor: {
+            description: "The founder of Gryffindor house. A righteous man, he believed that any child who showed magical abilities before the age of 11 should be able to attend Hogwarts. He chose as members of his house those who demonstrated valor, courage and bravery. Corresponds to the element of fire."
+        },
+        HelgaHufflepuff: {
+            description: "The founder of Hufflepuff house. She was a kind and warm woman. The values ​​that a person must possess to be sorted into the Hufflepuff house are loyalty, patience, and hard work above all else. He is also known to have given house elves work at Hogwarts. It corresponds to the element of earth."
+        },
+        RowenaRavenclaw:{
+            description: "The founder of Ravenclaw house, she was a strong and intelligent woman. Intellect is a very valuable asset for students of Ravenclaw house. Because of this, Rowena wanted to make Hogwarts one of the finest in the land, teaching children with the highest intelligence. It corresponds to the element of air."
+        },
+        SalazarSlytherin:{
+            description: `The founder of Slytherin house. A shrewd man, he is not unlike many of the students he took into his home. He firmly believed that only pureblood wizards (i.e. those who have a mother and father from wizarding families) should be allowed to attend Hogwarts and that was why Slytherin only accepted purebloods into this house. Not long after, Slytherin caused a huge dispute with the other founders, and that eventually caused a permanent rift with Gryffindor, leading to Slytherin's departure from the school. Before leaving, however, he created the Chamber of Secrets, with a huge statue of himself and a horrible monster. Corresponds to the element of water.`
+        }
+    },
     products: [
         {
             id: 1,
