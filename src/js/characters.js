@@ -147,8 +147,8 @@ const app_characters = createApp({
       // Obtener personajes para la página actual
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = this.currentPage * this.itemsPerPage;
-      if(this.filteredCharacters.length > 0){
-        this.currentPage = 1
+      if (this.currentPage > this.totalPages) {
+        this.currentPage = 1;
       }
       this.Characters = this.filteredCharacters.slice(start, end);
       
