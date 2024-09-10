@@ -5,6 +5,7 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
+      characterMaxAge: 0,
       quantityProductSaved: 0,
       clickCarts: false,
       ProductSaved: [],
@@ -60,6 +61,36 @@ createApp({
               return acc;
             }, {});
 
+            const currentYear = new Date().getFullYear();
+            const houseData = {};
+            let oldestCharacter = null;
+            let maxAge = 0;
+            data.forEach(character => {
+              const age = currentYear - character.yearOfBirth;
+              const house = character.house;
+            
+              // Calcular el promedio de edades por casa
+              if (!houseData[house]) {
+                houseData[house] = { totalAge: 0, count: 0 };
+              }
+              houseData[house].totalAge += age;
+              houseData[house].count += 1;
+            
+              // Encontrar el personaje con mayor edad
+              if (age > maxAge) {
+                maxAge = age;
+                oldestCharacter = character;
+              }
+            });
+            this.characterMaxAge = oldestCharacter 
+            console.log(this.characterMaxAge);
+            
+            let nameProm = Object.keys(houseData)
+            nameProm[nameProm.length -1] = "Others"
+            let countProm = Object.keys(houseData).map(house => houseData[house].totalAge / houseData[house].count)
+
+            this.createPromStudentChart(nameProm, countProm)
+
             // Prepare data for Chart.js (genders)
             const genderLabels = Object.keys(countGender);
             const genderValues = Object.values(countGender);
@@ -89,6 +120,7 @@ createApp({
         acc[category] = (acc[category] || 0) + 1;
         return acc;
       }, {});
+      
 
 
       // Prepare data for Chart.js
@@ -159,6 +191,73 @@ createApp({
             title: {
               display: true,
               text: 'Students at Home',
+              font: {
+                size: 23,
+                weight: 'bold'
+              }
+            }
+          }
+        }
+      });
+    },
+    createPromStudentChart(labels, data){
+      let ctx = document.getElementById('tableAverage').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Students',
+            data: data,
+            backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 2)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 2)',
+              'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              ticks: {
+                beginAtZero: true,
+                font: {
+                  size: 20,
+                  weight: 'bold'
+                }
+              }
+            },
+            x: {
+              ticks: {
+                font: {
+                  size: 22,
+                  weight: 'bold'
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  size: 20,
+                  weight: 'bold'
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: 'Average age per house',
               font: {
                 size: 23,
                 weight: 'bold'
